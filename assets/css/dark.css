@@ -1,0 +1,55 @@
+[data-theme="dark"] {
+    --primary: #0077B6;
+    --primary-dark: #0096C7;
+    /* Lighter in dark mode for contrast */
+    --background: #0B1E2D;
+    --surface: #132B3D;
+    --text-primary: #E2E8F0;
+    --text-secondary: #94A3B8;
+    --border: #1E3A52;
+    --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.3);
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] body {
+    background-color: var(--background);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .navbar {
+    background: rgba(11, 30, 45, 0.9);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .card {
+    background-color: var(--surface);
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .text-inverse {
+    color: var(--background);
+}
+
+[data-theme="dark"] .bg-light {
+    background-color: #0F2535 !important;
+}
+
+[data-theme="dark"] .bg-white {
+    background-color: var(--surface) !important;
+}
+
+/* Accent Glow */
+[data-theme="dark"] .btn-accent {
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+[data-theme="dark"] .hero-glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(0, 180, 216, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+    top: -10%;
+    right: -10%;
+    z-index: 0;
+    pointer-events: none;
+}

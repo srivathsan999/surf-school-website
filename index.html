@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surf School | Master the Waves</title>
+    <meta name="description"
+        content="Premier surf academy offering lessons, camps, and private coaching for all levels. Join us and ride the waves today.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap Grid (CDN) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap-grid.min.css">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css?v=1">
+    <link rel="stylesheet" href="assets/css/dark.css?v=1">
+    <link rel="stylesheet" href="assets/css/animations.css?v=1">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a href="index.html" class="logo text-primary fw-bold h3 mb-0">
+                <i class="fa-solid fa-water me-2"></i>SurfSchool
+            </a>
+
+            <div class="d-none d-lg-flex align-items-center gap-4">
+                <div class="dropdown position-relative">
+                    <a href="#" class="nav-link dropdown-toggle">Home <i class="fas fa-chevron-down ms-1"
+                            style="font-size: 0.8em;"></i></a>
+                    <ul class="dropdown-menu position-absolute bg-white shadow-lg p-2 rounded"
+                        style="display: none; top: 100%; left: 0; min-width: 200px; list-style: none;">
+                        <li><a href="index.html" class="d-block p-2 text-dark hover-bg-light rounded">Home 1</a></li>
+                        <li><a href="home-2.html" class="d-block p-2 text-dark hover-bg-light rounded">Home 2</a></li>
+                    </ul>
+                </div>
+                <a href="programs.html" class="nav-link">Programs</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="pricing.html" class="nav-link">Pricing</a>
+                <a href="blog.html" class="nav-link">Blog</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+            </div>
+
+            <div class="d-flex align-items-center gap-3">
+                <button id="theme-toggle" class="btn btn-outline p-2 border-0 rounded-circle" aria-label="Toggle Theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="login.html" class="btn btn-outline d-none d-sm-inline-flex px-4 py-2"
+                    style="font-size: 0.9rem;">Login</a>
+                <a href="signup.html" class="btn btn-primary d-none d-sm-inline-flex px-4 py-2"
+                    style="font-size: 0.9rem;">Sign Up</a>
+
+                <!-- Mobile Menu Button -->
+                <button id="menu-toggle" class="d-lg-none btn btn-outline border-0 text-primary">
+                    <i class="fas fa-bars fa-lg"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="position-fixed top-0 start-0 w-100 h-100 bg-white"
+        style="z-index: 999; transform: translateX(100%); transition: transform 0.3s ease; padding-top: 100px;">
+        <div class="container d-flex flex-column align-items-center gap-4">
+            <a href="index.html" class="h4 text-dark mobile-nav-link">Home</a>
+            <a href="programs.html" class="h4 text-dark mobile-nav-link">Programs</a>
+            <a href="about.html" class="h4 text-dark mobile-nav-link">About</a>
+            <a href="pricing.html" class="h4 text-dark mobile-nav-link">Pricing</a>
+            <a href="blog.html" class="h4 text-dark mobile-nav-link">Blog</a>
+            <a href="contact.html" class="h4 text-dark mobile-nav-link">Contact</a>
+            <a href="dashboard.html" class="h4 text-dark mobile-nav-link">Dashboard</a>
+            <div class="d-flex gap-3 mt-4">
+                <a href="login.html" class="btn btn-outline px-4">Login</a>
+                <a href="signup.html" class="btn btn-primary px-4">Sign Up</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero d-flex align-items-center position-relative">
+        <div class="position-absolute top-0 start-0 w-100 h-100" style="z-index: -1;">
+            <img src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?q=80&w=2070&auto=format&fit=crop"
+                alt="Surfing Hero" class="w-100 h-100 object-cover" style="filter: brightness(0.8);">
+            <div class="position-absolute top-0 start-0 w-100 h-100"
+                style="background: linear-gradient(180deg, rgba(15, 23, 42, 0.4) 0%, rgba(15, 23, 42, 0.1) 100%);">
+            </div>
+        </div>
+
+        <div class="container position-relative text-white hero-content">
+            <div class="row">
+                <div class="col-lg-8">
+                    <span class="d-block text-accent fw-bold text-uppercase mb-3 tracking-wider">Est. 2024 •
+                        California</span>
+                    <h1 class="display-1 fw-bold mb-4">Ride The Wave of Your Life</h1>
+                    <p class="lead text-white-50 mb-5" style="font-size: 1.25rem; max-width: 600px;">
+                        Professional surf coaching for all skill levels. Experience the ocean like never before with our
+                        certified instructors.
+                    </p>
+                    <div class="d-flex gap-3 flex-wrap">
+                        <a href="programs.html" class="btn btn-primary btn-lg px-5 py-3">Start Learning</a>
+                        <a href="about.html"
+                            class="btn btn-outline text-white border-white btn-lg px-5 py-3 hover-text-dark">Explore
+                            School</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div class="text-center mb-5 reveal-on-scroll">
+                <h2 class="h1 mb-3">Why Choose Us?</h2>
+                <p class="text-secondary">We provide the best environment for learning and growing.</p>
+            </div>
+
+            <div class="row g-4 card-grid-stagger">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm p-4 text-center">
+                        <div class="icon-box text-primary mb-4">
+                            <i class="fas fa-certificate fa-3x"></i>
+                        </div>
+                        <h3 class="h4 mb-3">Certified Instructors</h3>
+                        <p class="text-secondary">Learn from ISA certified professionals with years of experience.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm p-4 text-center">
+                        <div class="icon-box text-primary mb-4">
+                            <i class="fas fa-users fa-3x"></i>
+                        </div>
+                        <h3 class="h4 mb-3">Small Groups</h3>
+                        <p class="text-secondary">Personalized attention with a maximum of 4 students per instructor.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm p-4 text-center">
+                        <div class="icon-box text-primary mb-4">
+                            <i class="fas fa-shield-alt fa-3x"></i>
+                        </div>
+                        <h3 class="h4 mb-3">Top Safety</h3>
+                        <p class="text-secondary">We prioritize your safety with premium equipment and ideal spots.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Programs -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-end mb-5 reveal-on-scroll">
+                <div>
+                    <h2 class="h1 mb-2">Our Programs</h2>
+                    <p class="text-secondary mb-0">Choose the perfect course for your level.</p>
+                </div>
+                <a href="programs.html" class="btn btn-outline d-none d-md-inline-flex">View All</a>
+            </div>
+
+            <div class="row g-4 reveal-on-scroll">
+                <!-- Program 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card p-0 h-100 overflow-hidden border-0 shadow-card">
+                        <div class="position-relative img-zoom-container" style="height: 250px;">
+                            <img src="https://images.unsplash.com/photo-1534066060010-3b2dcc3fc73b?q=80&w=2070&auto=format&fit=crop"
+                                class="w-100 h-100 object-cover img-zoom" alt="Beginner Surf">
+                            <span
+                                class="badge bg-primary position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">Beginner</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-accent fw-bold">$50 <span class="text-secondary fw-normal">/
+                                        session</span></span>
+                                <span class="text-secondary"><i class="far fa-clock me-1"></i> 2 Hours</span>
+                            </div>
+                            <h3 class="h4 mb-3"><a href="program-details.html?id=intro"
+                                    class="text-reset text-decoration-none">First Wave</a></h3>
+                            <p class="text-secondary mb-4">Perfect for absolute beginners. Learn the basics of paddling,
+                                standing up, and ocean safety.</p>
+                            <a href="program-details.html?id=intro" class="btn btn-outline w-100 rounded-pill">View
+                                Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Program 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card p-0 h-100 overflow-hidden border-0 shadow-card">
+                        <div class="position-relative img-zoom-container" style="height: 250px;">
+                            <img src="https://images.unsplash.com/photo-1415931633537-351139717d27?q=80&w=2072&auto=format&fit=crop"
+                                class="w-100 h-100 object-cover img-zoom" alt="Intermediate Surf">
+                            <span
+                                class="badge bg-info position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">Intermediate</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-accent fw-bold">$75 <span class="text-secondary fw-normal">/
+                                        session</span></span>
+                                <span class="text-secondary"><i class="far fa-clock me-1"></i> 3 Hours</span>
+                            </div>
+                            <h3 class="h4 mb-3"><a href="program-details.html?id=intermediate"
+                                    class="text-reset text-decoration-none">Green Wave Rider</a></h3>
+                            <p class="text-secondary mb-4">Transition from whitewater to green waves. Improve your
+                                turning and wave reading skills.</p>
+                            <a href="program-details.html?id=intermediate"
+                                class="btn btn-outline w-100 rounded-pill">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Program 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card p-0 h-100 overflow-hidden border-0 shadow-card">
+                        <div class="position-relative img-zoom-container" style="height: 250px;">
+                            <img src="https://images.unsplash.com/photo-1528157774130-10901df6081e?q=80&w=2070&auto=format&fit=crop"
+                                class="w-100 h-100 object-cover img-zoom" alt="Private Coaching">
+                            <span
+                                class="badge bg-warning text-dark position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">Private</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="text-accent fw-bold">$120 <span class="text-secondary fw-normal">/
+                                        session</span></span>
+                                <span class="text-secondary"><i class="far fa-clock me-1"></i> 2 Hours</span>
+                            </div>
+                            <h3 class="h4 mb-3"><a href="program-details.html?id=advanced"
+                                    class="text-reset text-decoration-none">1-on-1 Coaching</a></h3>
+                            <p class="text-secondary mb-4">Intensive private session tailored exclusively to your goals
+                                and current skill level.</p>
+                            <a href="program-details.html?id=advanced" class="btn btn-outline w-100 rounded-pill">View
+                                Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div class="text-center mb-5 reveal-on-scroll">
+                <h2 class="h1 mb-3">Student Stories</h2>
+                <p class="text-secondary">Hear from those who caught their first wave with us.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm p-4 h-100">
+                        <div class="mb-3 text-warning">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-secondary mb-4">"Absolutely incredible experience. The instructors were so
+                            patient and I stood up on my first day! Highly recommend."</p>
+                        <div class="d-flex align-items-center gap-3">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" class="rounded-circle"
+                                width="50" height="50" alt="User">
+                            <div>
+                                <h6 class="fw-bold mb-0">Sarah Jenkins</h6>
+                                <span class="small text-secondary">Beginner Course</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm p-4 h-100">
+                        <div class="mb-3 text-warning">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-secondary mb-4">"The intermediate advanced class really helped me refine my
+                            turns. Great spot analysis and feedback."</p>
+                        <div class="d-flex align-items-center gap-3">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle" width="50"
+                                height="50" alt="User">
+                            <div>
+                                <h6 class="fw-bold mb-0">Mike Ross</h6>
+                                <span class="small text-secondary">Intermediate</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 shadow-sm p-4 h-100">
+                        <div class="mb-3 text-warning">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-secondary mb-4">"Booked a private family session. Safe, fun, and memorable. The
+                            kids haven't stopped talking about it!"</p>
+                        <div class="d-flex align-items-center gap-3">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" class="rounded-circle"
+                                width="50" height="50" alt="User">
+                            <div>
+                                <h6 class="fw-bold mb-0">Elena Rodriguez</h6>
+                                <span class="small text-secondary">Family Session</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet The Team -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-end mb-5 reveal-on-scroll">
+                <div>
+                    <h2 class="h1 mb-2">Meet Your Instructors</h2>
+                    <p class="text-secondary mb-0">World-class pros ready to teach you.</p>
+                </div>
+                <a href="about.html" class="btn btn-outline mt-3 mt-md-0">All Instructors</a>
+            </div>
+            <div class="row g-4 reveal-on-scroll">
+                <div class="col-md-4">
+                    <div class="card border-0 overflow-hidden shadow-card text-center">
+                        <div class="position-relative" style="height: 300px;">
+                            <img src="https://images.unsplash.com/photo-1541534401786-2077eed87a74?q=80&w=2000&auto=format&fit=crop"
+                                class="w-100 h-100 object-cover" alt="Instructor">
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-1">Kai Thompson</h5>
+                            <span class="text-accent small text-uppercase fw-bold d-block mb-3">Head Instructor</span>
+                            <p class="text-secondary small mb-3">15 years of competitive surfing and coaching
+                                experience.</p>
+                            <div class="d-flex justify-content-center gap-2">
+                                <a href="#" class="text-secondary hover-text-primary"><i
+                                        class="fab fa-instagram"></i></a>
+                                <a href="#" class="text-secondary hover-text-primary"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 overflow-hidden shadow-card text-center">
+                        <div class="position-relative" style="height: 300px;">
+                            <img src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?q=80&w=2070&auto=format&fit=crop"
+                                class="w-100 h-100 object-cover" alt="Instructor">
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-1">Lani Moana</h5>
+                            <span class="text-accent small text-uppercase fw-bold d-block mb-3">Senior Coach</span>
+                            <p class="text-secondary small mb-3">Specializes in longboarding and beginner techniques.
+                            </p>
+                            <div class="d-flex justify-content-center gap-2">
+                                <a href="#" class="text-secondary hover-text-primary"><i
+                                        class="fab fa-instagram"></i></a>
+                                <a href="#" class="text-secondary hover-text-primary"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card border-0 overflow-hidden shadow-card text-center">
+                        <div class="position-relative" style="height: 300px;">
+                            <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?q=80&w=2000&auto=format&fit=crop"
+                                class="w-100 h-100 object-cover" alt="Instructor">
+                        </div>
+                        <div class="card-body p-4">
+                            <h5 class="fw-bold mb-1">Jay Cortez</h5>
+                            <span class="text-accent small text-uppercase fw-bold d-block mb-3">Performance Coach</span>
+                            <p class="text-secondary small mb-3">Focuses on advanced maneuvers and competition prep.</p>
+                            <div class="d-flex justify-content-center gap-2">
+                                <a href="#" class="text-secondary hover-text-primary"><i
+                                        class="fab fa-instagram"></i></a>
+                                <a href="#" class="text-secondary hover-text-primary"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visual CTA -->
+    <section class="position-relative py-5">
+        <div class="position-absolute top-0 start-0 w-100 h-100" style="z-index: -1;">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2073&auto=format&fit=crop"
+                class="w-100 h-100 object-cover" style="filter: brightness(0.6);" alt="Ocean Background">
+        </div>
+        <div class="container text-center text-white py-5">
+            <h2 class="display-3 fw-bold mb-4">Ready to Catch Your Wave?</h2>
+            <p class="lead mb-5" style="max-width: 600px; margin: 0 auto;">Join thousands of happy students and
+                experience the thrill of surfing today.</p>
+            <a href="programs.html" class="btn btn-primary btn-lg rounded-pill px-5 py-3 shadow-lg transform-hover">Book
+                Your Lesson Now</a>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white pt-5 pb-3">
+        <div class="container">
+            <div class="row g-5 mb-5">
+                <div class="col-lg-4">
+                    <a href="index.html" class="h3 fw-bold text-white text-decoration-none mb-4 d-block">
+                        <i class="fa-solid fa-water text-accent me-2"></i>SurfSchool
+                    </a>
+                    <p class="text-white-50 mb-4">
+                        We are a world-class surf academy dedicated to sharing the passion of surfing with students from
+                        around the globe.
+                    </p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="btn btn-sm btn-outline-light rounded-circle px-2" aria-label="Facebook"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="btn btn-sm btn-outline-light rounded-circle px-2" aria-label="Instagram"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="#" class="btn btn-sm btn-outline-light rounded-circle px-2" aria-label="Twitter"><i
+                                class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h4 class="h6 text-accent text-uppercase fw-bold mb-4">Programs</h4>
+                    <ul class="d-flex flex-column gap-2">
+                        <li><a href="programs.html" class="text-white-50 text-decoration-none hover-text-white">Beginner
+                                Surf</a></li>
+                        <li><a href="programs.html"
+                                class="text-white-50 text-decoration-none hover-text-white">Intermediate</a></li>
+                        <li><a href="programs.html" class="text-white-50 text-decoration-none hover-text-white">Private
+                                Coaching</a></li>
+                        <li><a href="programs.html" class="text-white-50 text-decoration-none hover-text-white">Surf
+                                Camps</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h4 class="h6 text-accent text-uppercase fw-bold mb-4">Support</h4>
+                    <ul class="d-flex flex-column gap-2">
+                        <li><a href="contact.html" class="text-white-50 text-decoration-none hover-text-white">Contact
+                                Us</a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none hover-text-white">FAQ</a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none hover-text-white">Terms &
+                                Conditions</a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none hover-text-white">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h4 class="h6 text-accent text-uppercase fw-bold mb-4">Newsletter</h4>
+                    <p class="text-white-50 mb-3">Subscribe to get the latest surf tips and camp dates.</p>
+                    <form action="#" class="d-flex gap-2">
+                        <input type="email" class="form-control bg-transparent border-secondary text-white"
+                            placeholder="Your email">
+                        <button class="btn btn-accent px-4">Go</button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-top border-secondary pt-3 text-center text-white-50">
+                <small>© 2024 SurfSchool. All rights reserved.</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="assets/js/theme-toggle.js"></script>
+    <script src="assets/js/animations.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
