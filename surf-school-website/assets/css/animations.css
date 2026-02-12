@@ -1,0 +1,53 @@
+/* Initial States for Scroll Animations */
+.reveal-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal-up.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-in {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.reveal-in.active {
+    opacity: 1;
+}
+
+/* Button Glow implemented in style.css but advanced effects here */
+@keyframes pulse-glow {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 180, 216, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(0, 180, 216, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 180, 216, 0);
+    }
+}
+
+.btn-pulse {
+    animation: pulse-glow 2s infinite;
+}
+
+/* Image Hover Zoom */
+.img-zoom-container {
+    overflow: hidden;
+    border-radius: var(--border-radius-md);
+}
+
+.img-zoom {
+    transition: transform 0.5s ease;
+}
+
+.img-zoom-container:hover .img-zoom {
+    transform: scale(1.05);
+}
