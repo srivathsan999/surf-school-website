@@ -19,7 +19,7 @@ const programsData = {
     'intermediate': {
         title: "Wave Selection & Turns",
         badge: "Intermediate",
-        image: "https://images.unsplash.com/photo-1415931633537-351139717d27?q=80&w=2072&auto=format&fit=crop", // Distinct image
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY0dvaRJ7QYbnUcjNF-zg9-EYMxqWV_WkJFw&s", // Matches programs.html
         price: "$80",
         duration: "3 Hours",
         description: "Ready to go beyond the whitewater? This course focuses on reading the ocean, catching unbroken green waves, and executing your first bottom turns.",
@@ -36,7 +36,7 @@ const programsData = {
     'advanced': {
         title: "High Performance",
         badge: "Advanced",
-        image: "https://images.unsplash.com/photo-1520116468816-95b69f847357?q=80&w=2070&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1520116468816-95b69f847357?q=80&w=2070&auto=format&fit=crop", // Matches programs.html
         price: "$120",
         duration: "4 Hours",
         description: "Refine your style and technique with video analysis. We focus on advanced maneuvers like cutbacks, floaters, and generating speed on the wave.",
@@ -53,7 +53,7 @@ const programsData = {
     'kids': {
         title: "Grom Squad",
         badge: "Kids",
-        image: "https://images.unsplash.com/photo-1502933691298-84fc14542831?q=80&w=2070&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1502933691298-84fc14542831?q=80&w=2070&auto=format&fit=crop", // Matches programs.html
         price: "$45",
         duration: "1.5 Hours",
         description: "A fun and safe environment for kids to fall in love with the ocean. We focus on confidence, water safety, and having a blast in the waves.",
@@ -70,7 +70,7 @@ const programsData = {
     'camp': {
         title: "Weekend Surf Camp",
         badge: "Camp",
-        image: "https://images.unsplash.com/photo-1528157774130-10901df6081e?q=80&w=2070&auto=format&fit=crop",
+        image: "https://images.squarespace-cdn.com/content/v1/529cc11ae4b0d8737039d39e/af0ef545-66b5-4f08-a94d-16b26f34d870/t+%287+of+1%29-309.jpg", // Matches programs.html
         price: "$300",
         duration: "2 Days",
         description: "Immerse yourself in the surf lifestyle. Two full days of coaching, yoga sessions, video review, and hanging out with like-minded people.",
@@ -87,7 +87,7 @@ const programsData = {
     'yoga': {
         title: "Surf & Yoga Retreat",
         badge: "Wellness",
-        image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=2070&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=2070&auto=format&fit=crop", // Matches programs.html
         price: "$85",
         duration: "4 Hours",
         description: "Balance the adrenaline of surfing with the calm of yoga. Start with a surf session and end with a guided beach yoga flow to stretch and relax.",

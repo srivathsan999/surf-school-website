@@ -35,7 +35,7 @@ const blogData = {
         date: "Sep 28, 2024",
         readTime: "5 Min Read",
         author: "Sarah Jenkins",
-        heroImage: "https://images.unsplash.com/photo-1520455979564-9be89b6b7cf4?q=80&w=2070&auto=format&fit=crop", // Distinct image
+        heroImage: "https://images.unsplash.com/photo-1502680390469-be75c86b636f?q=80&w=2070&auto=format&fit=crop", // Matches blog.html
         content: `
             <p class="lead text-secondary mb-4">Understanding the ocean is the first step to becoming a better surfer. Here is everything you need to know about swell data.</p>
 
@@ -59,7 +59,7 @@ const blogData = {
         date: "Sep 15, 2024",
         readTime: "6 Min Read",
         author: "Mike Ross",
-        heroImage: "https://images.unsplash.com/photo-1530866495561-eb8fbd029c7e?q=80&w=600&auto=format&fit=crop",
+        heroImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKBP08xJ6n6XLWpwidv_HaFwHdds2OYLJVPg&s", // Matches blog.html
         content: `
             <p class="lead text-secondary mb-4">A good wetsuit is the difference between a 20-minute shivering session and a 2-hour marathon. Here's how to pick the right one.</p>
 
@@ -79,7 +79,7 @@ const blogData = {
         date: "Sep 01, 2024",
         readTime: "3 Min Read",
         author: "Team SurfSchool",
-        heroImage: "https://images.unsplash.com/photo-1528157774130-10901df6081e?q=80&w=600&auto=format&fit=crop",
+        heroImage: "https://media.istockphoto.com/id/1435005446/photo/recyclers-cleaning-the-beach.jpg?s=612x612&w=0&k=20&c=92lBY2A3i0c32_1wd_tTulVcaW0crv8jItFucmS75qo=",
         content: `
             <p class="lead text-secondary mb-4">Last weekend, over 50 volunteers joined us for our monthly beach cleanup. The results were inspiring!</p>
 

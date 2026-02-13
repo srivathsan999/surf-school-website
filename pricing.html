@@ -106,13 +106,16 @@
             .mobile-menu-toggle {
                 display: block;
             }
+
             footer {
                 text-align: center;
             }
+
             .row {
                 margin-left: 0 !important;
                 margin-right: 0 !important;
             }
+
             /* Mobile Logo Size */
             .logo.h3 {
                 font-size: 1.2rem !important;
@@ -128,13 +131,13 @@
 </head>
 
 <body>
-    
+
 
 
 
     <!-- Mobile Navigation Menu -->
     <nav class="mobile-nav-menu" id="mobile-nav-menu">
-       
+
         <ul class="nav-links">
             <li><a href="index.html">Home1</a></li>
             <li><a href="home-2.html">Home2</a></li>
@@ -172,7 +175,7 @@
                     </ul>
                 </div>
                 <a href="about.html" class="nav-link">About</a>
-                <a href="programs.html" class="nav-link">Programs</a>                
+                <a href="programs.html" class="nav-link">Programs</a>
                 <a href="pricing.html" class="nav-link active">Pricing</a>
                 <a href="blog.html" class="nav-link">Blog</a>
                 <a href="contact.html" class="nav-link">Contact</a>
@@ -180,31 +183,28 @@
 
             <div class="navbar-actions-wrapper d-flex align-items-center gap-3">
 
-    <!-- Theme Toggle -->
-    <button id="theme-toggle"
-        class="btn btn-outline theme-toggle p-2 border-0 rounded-circle"
-        aria-label="Toggle Theme">
-        <i class="fas fa-sun"></i>
-    </button>
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" class="btn btn-outline theme-toggle p-2 border-0 rounded-circle"
+                    aria-label="Toggle Theme">
+                    <i class="fas fa-sun"></i>
+                </button>
 
-    <!-- Desktop Buttons -->
-    <a href="dashboard.html"
-        class="btn btn-outline-primary px-3 py-1 rounded-pill d-none d-lg-inline-flex">
-        Dashboard
-    </a>
+                <!-- Desktop Buttons -->
+                <a href="dashboard.html" class="btn btn-outline-primary px-3 py-1 rounded-pill d-none d-lg-inline-flex">
+                    Dashboard
+                </a>
 
-    <a href="signup.html"
-        class="btn btn-primary d-none d-lg-inline-flex px-4 py-2"
-        style="font-size: 0.9rem;">
-        Sign Up
-    </a>
+                <a href="signup.html" class="btn btn-primary d-none d-lg-inline-flex px-4 py-2"
+                    style="font-size: 0.9rem;">
+                    Sign Up
+                </a>
 
-    <!-- Hamburger (Mobile Only) -->
-    <button class="mobile-menu-toggle d-lg-none" id="mobile-menu-toggle">
-        <i class="fas fa-bars"></i>
-    </button>
+                <!-- Hamburger (Mobile Only) -->
+                <button class="mobile-menu-toggle d-lg-none" id="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
 
-</div>
+            </div>
         </div>
     </nav>
 
@@ -268,7 +268,6 @@
                     <div class="card border-0 shadow-sm p-4 text-center h-100">
                         <h3 class="h5 text-secondary mb-2">Video Analysis</h3>
                         <div class="display-4 fw-bold text-dark mb-4">$100</div>
-                        <p class="text-secondary small mb-4">Add-on</p>
                         <ul class="list-unstyled d-flex flex-column gap-3 mb-5 text-start mx-auto"
                             style="max-width: 250px;">
                             <li><i class="fas fa-check text-primary me-2"></i> 1 Hour Session Analysis</li>
@@ -285,6 +284,17 @@
 
     <!-- FAQ -->
     <section class="section-padding bg-light">
+        <style>
+            /* Custom styles for FAQ dropdowns */
+            details summary {
+                list-style: none;
+                cursor: pointer;
+            }
+
+            details summary::-webkit-details-marker {
+                display: none;
+            }
+        </style>
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="h2 fw-bold">Frequently Asked Questions</h2>
@@ -292,20 +302,36 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="d-flex flex-column gap-3">
-                        <div class="card border-0 p-4">
-                            <h4 class="h6 fw-bold mb-2">Do I need to bring my own board?</h4>
-                            <p class="text-secondary mb-0">No! All our lessons include high-quality soft-top boards
-                                perfect for learning, as well as wetsuits.</p>
+                        <div class="card border-0 shadow-sm">
+                            <details class="p-4" open>
+                                <summary class="h6 fw-bold mb-0 d-flex justify-content-between align-items-center">
+                                    Do I need to bring my own board? <i
+                                        class="fas fa-chevron-down small text-primary"></i>
+                                </summary>
+                                <p class="text-secondary mt-3 mb-0">No! All our lessons include high-quality soft-top
+                                    boards
+                                    perfect for learning, as well as wetsuits.</p>
+                            </details>
                         </div>
-                        <div class="card border-0 p-4">
-                            <h4 class="h6 fw-bold mb-2">What if it rains?</h4>
-                            <p class="text-secondary mb-0">Surfing is a water sport! We surf rain or shine, unless
-                                conditions are dangerous (lightning or extreme storm).</p>
+                        <div class="card border-0 shadow-sm">
+                            <details class="p-4">
+                                <summary class="h6 fw-bold mb-0 d-flex justify-content-between align-items-center">
+                                    What if it rains? <i class="fas fa-chevron-down small text-primary"></i>
+                                </summary>
+                                <p class="text-secondary mt-3 mb-0">Surfing is a water sport! We surf rain or shine,
+                                    unless
+                                    conditions are dangerous (lightning or extreme storm).</p>
+                            </details>
                         </div>
-                        <div class="card border-0 p-4">
-                            <h4 class="h6 fw-bold mb-2">Is there an age limit?</h4>
-                            <p class="text-secondary mb-0">We teach kids from age 6 and up. Swimming ability is required
-                                for safety.</p>
+                        <div class="card border-0 shadow-sm">
+                            <details class="p-4">
+                                <summary class="h6 fw-bold mb-0 d-flex justify-content-between align-items-center">
+                                    Is there an age limit? <i class="fas fa-chevron-down small text-primary"></i>
+                                </summary>
+                                <p class="text-secondary mt-3 mb-0">We teach kids from age 6 and up. Swimming ability is
+                                    required
+                                    for safety.</p>
+                            </details>
                         </div>
                     </div>
                 </div>

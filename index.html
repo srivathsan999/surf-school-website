@@ -94,11 +94,11 @@
             font-weight: 400;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 991px) {
             .row.g-4 .card .position-relative {
                 height: 250px;
             }
-            
+
             /* Hero Section Mobile Spacing */
             .hero {
                 padding-top: 3rem !important;
@@ -113,15 +113,19 @@
             footer {
                 padding-top: 3rem !important;
                 padding-bottom: 2rem !important;
+                text-align: center;
             }
 
             footer .row.g-5 {
                 gap: 3rem !important;
                 margin-bottom: 3rem !important;
+                flex-direction: column;
             }
 
             footer .col-lg-4,
-            footer .col-lg-2 {
+            footer .col-lg-2,
+            footer .col-md-4 {
+                width: 100%;
                 margin-bottom: 2rem;
                 text-align: center;
             }
@@ -129,6 +133,13 @@
             footer .logo {
                 text-align: center;
                 margin-bottom: 2rem;
+                justify-content: center;
+            }
+
+            footer .logo.d-block {
+                display: flex !important;
+                justify-content: center;
+                align-items: center;
             }
 
             footer .d-flex.gap-3 {
@@ -186,8 +197,8 @@
         /* Mobile Navigation */
         .mobile-menu-toggle {
             display: none;
-            
-           background: var(--surface);
+
+            background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 8px;
             padding: 0.5rem 1rem;
@@ -282,7 +293,7 @@
 
 <body>
 
-   
+
     <!-- Mobile Navigation Menu -->
     <nav class="mobile-nav-menu" id="mobile-nav-menu">
         <ul class="nav-links">
@@ -296,7 +307,7 @@
             <li><a href="dashboard.html"
                     class="btn btn-outline-primary px-3 py-1 rounded-pill d-block mt-2">Dashboard</a></li>
             <li><a href="signup.html" class="btn btn-primary px-3 py-1 rounded-pill d-block mt-2">Sign Up</a></li>
-            
+
         </ul>
     </nav>
 
@@ -318,13 +329,14 @@
                             style="font-size: 0.8em;"></i></a>
                     <ul class="dropdown-menu position-absolute bg-white shadow-lg p-2 rounded"
                         style="display: none; top: 100%; left: 0; min-width: 200px; list-style: none;">
-                        <li><a href="index.html" class="d-block p-2 text-primary fw-bold hover-bg-light rounded">Home 1</a></li>
+                        <li><a href="index.html" class="d-block p-2 text-primary fw-bold hover-bg-light rounded">Home
+                                1</a></li>
                         <li><a href="home-2.html" class="d-block p-2 text-primary  hover-bg-light rounded">Home
                                 2</a></li>
                     </ul>
                 </div>
                 <a href="about.html" class="nav-link">About</a>
-                <a href="programs.html" class="nav-link">Programs</a>                
+                <a href="programs.html" class="nav-link">Programs</a>
                 <a href="pricing.html" class="nav-link">Pricing</a>
                 <a href="blog.html" class="nav-link">Blog</a>
                 <a href="contact.html" class="nav-link">Contact</a>
@@ -332,31 +344,28 @@
 
             <div class="navbar-actions-wrapper d-flex align-items-center gap-3">
 
-    <!-- Theme Toggle -->
-    <button id="theme-toggle"
-        class="btn btn-outline theme-toggle p-2 border-0 rounded-circle"
-        aria-label="Toggle Theme">
-        <i class="fas fa-sun"></i>
-    </button>
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" class="btn btn-outline theme-toggle p-2 border-0 rounded-circle"
+                    aria-label="Toggle Theme">
+                    <i class="fas fa-sun"></i>
+                </button>
 
-    <!-- Desktop Buttons -->
-    <a href="dashboard.html"
-        class="btn btn-outline-primary px-3 py-1 rounded-pill d-none d-lg-inline-flex">
-        Dashboard
-    </a>
+                <!-- Desktop Buttons -->
+                <a href="dashboard.html" class="btn btn-outline-primary px-3 py-1 rounded-pill d-none d-lg-inline-flex">
+                    Dashboard
+                </a>
 
-    <a href="signup.html"
-        class="btn btn-primary d-none d-lg-inline-flex px-4 py-2"
-        style="font-size: 0.9rem;">
-        Sign Up
-    </a>
+                <a href="signup.html" class="btn btn-primary d-none d-lg-inline-flex px-4 py-2"
+                    style="font-size: 0.9rem;">
+                    Sign Up
+                </a>
 
-    <!-- Hamburger (Mobile Only) -->
-    <button class="mobile-menu-toggle d-lg-none" id="mobile-menu-toggle">
-        <i class="fas fa-bars"></i>
-    </button>
+                <!-- Hamburger (Mobile Only) -->
+                <button class="mobile-menu-toggle d-lg-none" id="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
 
-</div>
+            </div>
         </div>
     </nav>
 
@@ -542,7 +551,7 @@
                                 class="fas fa-star"></i><i class="fas fa-star"></i>
                         </div>
                         <p class="text-secondary mb-4">"Absolutely incredible experience. The instructors were so
-                            patient and I stood up on my first day! Highly recommend."</p>
+                            patient and I stood up on my first day!"</p>
                         <div class="d-flex align-items-center gap-3 justify-content-center">
                             <img src="https://randomuser.me/api/portraits/women/44.jpg" class="rounded-circle"
                                 width="50" height="50" alt="User">
@@ -678,7 +687,7 @@
             <p class="lead mb-4 text-white" style="max-width: 600px; margin: 0 auto;">From beginner lessons to advanced
                 coaching, our ISA-certified instructors will guide you every step of the way. Experience the ocean like
                 never before.</p>
-            
+
             <div class="d-flex gap-3 justify-content-center flex-wrap">
                 <a href="contact.html" class="btn btn-outline-light btn-lg rounded-pill px-5 py-3">Contact Us</a>
             </div>

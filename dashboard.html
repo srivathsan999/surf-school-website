@@ -32,17 +32,18 @@
         }
 
         .sidebar {
-             width: 280px;
-    background: var(--surface);
-    border-right: 1px solid var(--border);
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.3s ease;
-    position: fixed;
-    height: 100vh;
-    z-index: 1000;
-    left: 0; /* desktop sidebar on left */
-    
+            width: 280px;
+            background: var(--surface);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+            position: fixed;
+            height: 100vh;
+            z-index: 1000;
+            left: 0;
+            /* desktop sidebar on left */
+
         }
 
         .sidebar-header {
@@ -180,7 +181,7 @@
             font-size: 1rem;
         }
 
-        .forecast-card {
+        .card.forecast-card {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: white;
         }
@@ -196,78 +197,81 @@
             border: 1px solid var(--border);
             border-radius: 12px;
         }
-/* Mobile Topbar */
-.mobile-topbar {
-    display: none;
-}
+
+        /* Mobile Topbar */
+        .mobile-topbar {
+            display: none;
+        }
 
 
-/* Overlay */
-.sidebar-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.5);
-    display: none;
-    z-index: 999;
-}
+        /* Overlay */
+        .sidebar-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 999;
+        }
 
-/* Tablet & Mobile */
-@media (max-width: 991px) {
+        /* Tablet & Mobile */
+        @media (max-width: 991px) {
 
-   .sidebar-header {
-        display: none;
-    }
-    .sidebar-menu {
-        padding: 22% 0;
-    }
-    .mobile-topbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 60px;
-        background: var(--surface);
-        border-bottom: 1px solid var(--border);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 1rem;
-        z-index: 1100;
-    }
+            .sidebar-header {
+                display: none;
+            }
 
-    .mobile-menu-toggle {
-        display: block;
-        background: none;
-        border: none;
-        font-size: 1.5rem;
-        color: var(--text-primary);
-        cursor: pointer;
-    }
+            .sidebar-menu {
+                padding: 22% 0;
+            }
 
-    /* ✅ Slide from RIGHT */
-    .sidebar {
-        right: 0;
-        left: auto;
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
-        border-left: 1px solid var(--border);
-        border-right: none;
-    }
+            .mobile-topbar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 60px;
+                background: var(--surface);
+                border-bottom: 1px solid var(--border);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 1rem;
+                z-index: 1100;
+            }
 
-    .sidebar.active {
-        transform: translateX(0);
-    }
+            .mobile-menu-toggle {
+                display: block;
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+                color: var(--text-primary);
+                cursor: pointer;
+            }
 
-    .content-area {
-        margin-left: 0;
-        padding: 1.5rem;
-        padding-top: 80px;
-    }
+            /* ✅ Slide from RIGHT */
+            .sidebar {
+                right: 0;
+                left: auto;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+                border-left: 1px solid var(--border);
+                border-right: none;
+            }
 
-    .sidebar-overlay.active {
-        display: block;
-    }
-}
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .content-area {
+                margin-left: 0;
+                padding: 1.5rem;
+                padding-top: 80px;
+            }
+
+            .sidebar-overlay.active {
+                display: block;
+            }
+        }
 
         .content-section {
             display: none;
@@ -283,9 +287,11 @@
             object-fit: cover;
             width: 100%;
         }
-.no-scroll {
-    overflow: hidden;
-}
+
+        .no-scroll {
+            overflow: hidden;
+        }
+
         /* Scroll to Top Button */
         .scroll-to-top {
             position: fixed;
@@ -320,6 +326,7 @@
                 height: 45px;
                 font-size: 1rem;
             }
+
             #overview .col-4 {
                 width: 100%;
             }
@@ -335,35 +342,35 @@
             }
         }
     </style>
-    
+
     <script>
         // Define showSection function globally
         function showSection(sectionName) {
             console.log('Showing section:', sectionName);
-            
+
             // Hide all sections
             const sections = document.querySelectorAll('.content-section');
             sections.forEach(section => {
                 section.classList.remove('active');
             });
-            
+
             // Show selected section
             const targetSection = document.getElementById(sectionName);
             if (targetSection) {
                 targetSection.classList.add('active');
             }
-            
+
             // Update menu active state
             const menuItems = document.querySelectorAll('.menu-item');
             menuItems.forEach(item => {
                 item.classList.remove('active');
             });
-            
+
             const activeMenuItem = document.querySelector(`[data-content="${sectionName}"]`);
             if (activeMenuItem) {
                 activeMenuItem.classList.add('active');
             }
-            
+
             // Update URL
             window.location.hash = sectionName;
         }
@@ -371,54 +378,62 @@
 </head>
 
 <body>
-        <!-- Sidebar -->
+    <!-- Sidebar -->
     <!-- Mobile Topbar -->
-<div class="mobile-topbar">
-    <a href="index.html" class="logo text-primary fw-bold h5 mb-0">
-        <i class="fa-solid fa-water me-2"></i>SurfSchool
-    </a>
+    <div class="mobile-topbar">
+        <a href="index.html" class="logo text-primary fw-bold h5 mb-0">
+            <i class="fa-solid fa-water me-2"></i>SurfSchool
+        </a>
 
-    <button class="mobile-menu-toggle" id="mobile-menu-toggle">
-        <i class="fas fa-bars"></i>
-    </button>
-</div>
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
     <div class="sidebar-overlay" id="sidebar-overlay"></div>
-    
-    
+
+
     <div class="dashboard-container">
         <!-- Sidebar -->
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
-    <a href="index.html" class="logo text-primary fw-bold h3 mb-0">
-        <i class="fa-solid fa-water me-2"></i>SurfSchool
-    </a>
+                <a href="index.html" class="logo text-primary fw-bold h3 mb-0">
+                    <i class="fa-solid fa-water me-2"></i>SurfSchool
+                </a>
 
-    
-</div>
+
+            </div>
 
             <nav class="sidebar-menu">
-                <a href="#overview" class="menu-item active" data-content="overview" onclick="showSection('overview'); return false;">
+                <a href="#overview" class="menu-item active" data-content="overview"
+                    onclick="showSection('overview'); return false;">
                     <i class="fas fa-home"></i> Overview
                 </a>
-                <a href="#lessons" class="menu-item" data-content="lessons" onclick="showSection('lessons'); return false;">
+                <a href="#lessons" class="menu-item" data-content="lessons"
+                    onclick="showSection('lessons'); return false;">
                     <i class="fas fa-calendar"></i> My Lessons
                 </a>
-                <a href="#progress" class="menu-item" data-content="progress" onclick="showSection('progress'); return false;">
+                <a href="#progress" class="menu-item" data-content="progress"
+                    onclick="showSection('progress'); return false;">
                     <i class="fas fa-chart-line"></i> Progress
                 </a>
-                <a href="#booking" class="menu-item" data-content="booking" onclick="showSection('booking'); return false;">
+                <a href="#booking" class="menu-item" data-content="booking"
+                    onclick="showSection('booking'); return false;">
                     <i class="fas fa-book"></i> Book Session
                 </a>
-                <a href="#weather" class="menu-item" data-content="weather" onclick="showSection('weather'); return false;">
+                <a href="#weather" class="menu-item" data-content="weather"
+                    onclick="showSection('weather'); return false;">
                     <i class="fas fa-cloud-sun"></i> Weather & Forecast
                 </a>
-                <a href="#gallery" class="menu-item" data-content="gallery" onclick="showSection('gallery'); return false;">
+                <a href="#gallery" class="menu-item" data-content="gallery"
+                    onclick="showSection('gallery'); return false;">
                     <i class="fas fa-images"></i> Gallery
                 </a>
-                <a href="#settings" class="menu-item" data-content="settings" onclick="showSection('settings'); return false;">
+                <a href="#settings" class="menu-item" data-content="settings"
+                    onclick="showSection('settings'); return false;">
                     <i class="fas fa-cog"></i> Settings
                 </a>
-                <a href="#" class="menu-item logout-item" onclick="logout(); return false;" style="color: #dc3545; margin-top: auto;">
+                <a href="#" class="menu-item logout-item" onclick="logout(); return false;"
+                    style="color: #dc3545; margin-top: auto;">
                     <i class="fas fa-sign-out-alt"></i> Logout
                 </a>
             </nav>
@@ -626,15 +641,14 @@
                             <div class="d-flex gap-3">
                                 <div class="form-check card p-3 flex-fill text-center border-0 shadow-sm"
                                     style="cursor: pointer;">
-                                    <input class="form-check-input float-none mb-2" type="radio"
-                                        name="lessonType" checked>
+                                    <input class="form-check-input float-none mb-2" type="radio" name="lessonType"
+                                        checked>
                                     <label class="form-check-label d-block fw-bold small">Private
                                         Coaching</label>
                                 </div>
                                 <div class="form-check card p-3 flex-fill text-center border-0 shadow-sm"
                                     style="cursor: pointer;">
-                                    <input class="form-check-input float-none mb-2" type="radio"
-                                        name="lessonType">
+                                    <input class="form-check-input float-none mb-2" type="radio" name="lessonType">
                                     <label class="form-check-label d-block fw-bold small">Group
                                         Session</label>
                                 </div>
@@ -767,48 +781,48 @@
         </main>
     </div>
 
-    
+
     <script src="assets/js/theme-toggle.js"></script>
     <script>
-const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-const sidebar = document.getElementById('sidebar');
-const overlay = document.getElementById('sidebar-overlay');
-const menuItems = document.querySelectorAll('.menu-item');
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+        const menuItems = document.querySelectorAll('.menu-item');
 
-// Logout function
-function logout() {
-    // Clear any session data (if using localStorage)
-    localStorage.removeItem('userToken');
-    localStorage.removeItem('userData');
-    
-    // Redirect to home page
-    window.location.href = 'index.html';
-}
+        // Logout function
+        function logout() {
+            // Clear any session data (if using localStorage)
+            localStorage.removeItem('userToken');
+            localStorage.removeItem('userData');
 
-mobileMenuToggle.addEventListener('click', () => {
-    sidebar.classList.toggle('active');
-    overlay.classList.toggle('active');
-    document.body.classList.toggle('no-scroll');
-});
+            // Redirect to home page
+            window.location.href = 'index.html';
+        }
 
-// Close when clicking overlay
-overlay.addEventListener('click', () => {
-    sidebar.classList.remove('active');
-    overlay.classList.remove('active');
-    document.body.classList.remove('no-scroll');
-});
+        mobileMenuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.classList.toggle('no-scroll');
+        });
 
-// Close when clicking menu item (mobile only)
-menuItems.forEach(item => {
-    item.addEventListener('click', () => {
-        if (window.innerWidth <= 991) {
+        // Close when clicking overlay
+        overlay.addEventListener('click', () => {
             sidebar.classList.remove('active');
             overlay.classList.remove('active');
             document.body.classList.remove('no-scroll');
-        }
-    });
-});
-</script>
+        });
+
+        // Close when clicking menu item (mobile only)
+        menuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                if (window.innerWidth <= 991) {
+                    sidebar.classList.remove('active');
+                    overlay.classList.remove('active');
+                    document.body.classList.remove('no-scroll');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
