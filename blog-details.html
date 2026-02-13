@@ -16,12 +16,158 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css?v=2">
     <link rel="stylesheet" href="assets/css/dark.css?v=1">
+    
+    <style>
+        /* Mobile Navigation */
+.mobile-menu-toggle {
+    display: none;
+   background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+}
+
+.mobile-nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;   /* 🔥 slide from right */
+    left: auto;
+    width: 280px;
+    height: 100vh;
+    background: var(--surface);
+    border-left: 1px solid var(--border);
+    transition: right 0.3s ease;
+    z-index: 1000;
+    padding: 4rem 1.5rem 2rem;
+    overflow-y: auto;
+}
+
+.mobile-nav-menu.active {
+    right: 0;
+}
+
+        .mobile-nav-menu .logo {
+            display: block;
+            margin-bottom: 2rem;
+            text-decoration: none;
+        }
+
+        .mobile-nav-menu .nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0 0;
+        }
+
+        .mobile-nav-menu .nav-links li {
+            margin-bottom: 1rem;
+        }
+
+        .mobile-nav-menu .nav-links a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-menu .nav-links a:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .mobile-nav-menu .nav-links a.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+        /* Mobile Logo Size */
+@media (max-width: 768px) {
+    .logo.h3 {
+        font-size: 1.2rem !important;
+        margin-bottom: 0 !important;
+    }
+
+    .logo i {
+        font-size: 1rem !important;
+        margin-right: 0.5rem !important;
+    }
+}
+
+@media (max-width: 991px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+    /* Show theme toggle as fixed button */
+    #theme-toggle {
+       background: var(--surface);
+        border: 1px solid var(--border);
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+    }
+
+    .navbar-nav-wrapper {
+        display: none !important;
+    }
+}
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+            footer {
+                text-align: center;
+            }
+        }
+        
+    </style>
 </head>
 
 <body>
+    
+
+    <!-- Mobile Navigation Menu -->
+    <nav class="mobile-nav-menu" id="mobile-nav-menu">
+        
+        <ul class="nav-links">
+            <li><a href="index.html">Home1</a></li>
+            <li><a href="home-2.html">Home2</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="programs.html">Programs</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
+        </ul>
+    </nav>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
     <!-- Navbar (Simplified for brevity in generation, check index for full) -->
     <!-- Navbar -->
-    <nav class="navbar">
+    <nav class="navbar navbar-on-dark">
         <div class="container d-flex justify-content-between align-items-center">
             <div class="navbar-brand-wrapper">
                 <a href="index.html" class="logo text-primary fw-bold h3 mb-0">
@@ -48,19 +194,32 @@
             </div>
 
             <div class="navbar-actions-wrapper d-flex align-items-center gap-3">
-                <button id="theme-toggle" class="btn btn-outline p-2 border-0 rounded-circle" aria-label="Toggle Theme">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <a href="login.html" class="btn btn-outline d-none d-sm-inline-flex px-4 py-2"
-                    style="font-size: 0.9rem;">Login</a>
-                <a href="signup.html" class="btn btn-primary d-none d-sm-inline-flex px-4 py-2"
-                    style="font-size: 0.9rem;">Sign Up</a>
 
-                <!-- Mobile Menu Button -->
-                <button id="menu-toggle" class="d-lg-none btn btn-outline border-0 text-primary">
-                    <i class="fas fa-bars fa-lg"></i>
-                </button>
-            </div>
+    <!-- Theme Toggle -->
+    <button id="theme-toggle"
+        class="btn btn-outline theme-toggle p-2 border-0 rounded-circle"
+        aria-label="Toggle Theme">
+        <i class="fas fa-sun"></i>
+    </button>
+
+    <!-- Desktop Buttons -->
+    <a href="dashboard.html"
+        class="btn btn-outline-primary px-3 py-1 rounded-pill d-none d-lg-inline-flex">
+        Dashboard
+    </a>
+
+    <a href="signup.html"
+        class="btn btn-primary d-none d-lg-inline-flex px-4 py-2"
+        style="font-size: 0.9rem;">
+        Sign Up
+    </a>
+
+    <!-- Hamburger (Mobile Only) -->
+    <button class="mobile-menu-toggle d-lg-none" id="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+</div>
         </div>
     </nav>
 
@@ -204,6 +363,42 @@
     <script src="assets/js/theme-toggle.js"></script>
     <script src="assets/js/blog-details.js"></script>
     <script src="assets/js/main.js"></script>
+    
+    <script>
+        // Mobile menu toggle functionality
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileNavMenu = document.getElementById('mobile-nav-menu');
+        const overlay = document.getElementById('overlay');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileNavMenu.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking overlay
+        overlay.addEventListener('click', () => {
+            mobileNavMenu.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // Close mobile menu when clicking a link
+        const navLinks = document.querySelectorAll('.nav-links a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNavMenu.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+        });
+
+        // Highlight current page
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        navLinks.forEach(link => {
+            const linkPage = link.getAttribute('href');
+            if (linkPage === currentPage) {
+                link.classList.add('active');
+            }
+        });
+    </script>
 </body>
 
 </html>

@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Surf School | Home Variant 2</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='wave' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' style='stop-color:%2300B4D8'/><stop offset='100%25' style='stop-color:%230077B6'/></linearGradient></defs><rect width='32' height='32' fill='%23F8FAFC'/><path fill='url(%23wave)' d='M4 20c2-2 4-2 6 0s4 2 6 0 4-2 6 0 4 2 6 0v-8c-2 2-4 2-6 0s-4-2-6 0-4 2-6 0-4-2-6 0v8z'/><circle cx='16' cy='12' r='2' fill='%2300B4D8'/></svg>">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='wave' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' style='stop-color:%2300B4D8'/><stop offset='100%25' style='stop-color:%230077B6'/></linearGradient></defs><rect width='32' height='32' fill='%23F8FAFC'/><path fill='url(%23wave)' d='M4 20c2-2 4-2 6 0s4 2 6 0 4-2 6 0 4 2 6 0v-8c-2 2-4 2-6 0s-4-2-6 0-4 2-6 0-4-2-6 0v8z'/><circle cx='16' cy='12' r='2' fill='%2300B4D8'/></svg>">
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
@@ -20,7 +21,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css?v=2">
     <link rel="stylesheet" href="assets/css/dark.css?v=1">
-    
+
     <style>
         /* Scroll to Top Button */
         .scroll-to-top {
@@ -48,6 +49,61 @@
             transform: translateY(-3px);
         }
 
+        /* Upcoming Events Button Size */
+        .upcoming-events .btn {
+            font-size: 0.875rem;
+            padding: 0.5rem 1rem;
+        }
+
+        /* Remove row margins */
+        .row {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
+
+        /* Footer Row Padding Removal */
+        footer .row {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+
+        /* Footer Center Alignment */
+        footer {
+            text-align: center;
+        }
+
+        /* Social Icons Center and Twitter Icon Update */
+        footer .d-flex.gap-3 {
+            justify-content: center;
+        }
+
+        footer .fab.fa-twitter {
+            font-family: 'Font Awesome 6 Brands';
+            font-weight: 400;
+        }
+
+        /* Hero Section Responsive */
+        @media (max-width: 992px) {
+            .hero .row.align-items-center {
+                justify-content: center !important;
+            }
+            
+            .hero .col-lg-6 {
+                flex: 0 0 100%;
+                max-width: 100%;
+                text-align: center;
+            }
+            
+            .hero .position-relative {
+                margin-top: 2rem;
+            }
+
+            .hero .d-flex.gap-3 {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+        }
+
         @media (max-width: 768px) {
             .scroll-to-top {
                 bottom: 1rem;
@@ -55,6 +111,25 @@
                 width: 45px;
                 height: 45px;
                 font-size: 1rem;
+            }
+        }
+
+        /* Mobile Logo Size */
+        @media (max-width: 768px) {
+            .logo.h3 {
+                font-size: 1.2rem !important;
+                margin-bottom: 0 !important;
+            }
+            footer {
+                text-align: center;
+            }
+            .logo i {
+                font-size: 1rem !important;
+                margin-right: 0.5rem !important;
+            }
+
+            .hero .row.align-items-center {
+                padding: 2rem 0 !important;
             }
         }
 
@@ -67,11 +142,142 @@
                 font-size: 0.9rem;
             }
         }
+
+        /* Mobile Navigation */
+        .mobile-menu-toggle {
+            display: none;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+        }
+
+        .mobile-nav-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background: var(--surface);
+            border-left: 1px solid var(--border);
+            transition: right 0.3s ease;
+            z-index: 1000;
+            padding: 4rem 1.5rem 2rem;
+            overflow-y: auto;
+        }
+
+        .mobile-nav-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: transparent;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            cursor: pointer;
+            z-index: 1002;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-close:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .mobile-nav-menu .nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0 0;
+        }
+
+        .mobile-nav-menu .nav-links li {
+            margin-bottom: 1rem;
+        }
+
+        .mobile-nav-menu .nav-links a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-menu .nav-links a:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .mobile-nav-menu .nav-links a.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+
+
+            /* Hide desktop navbar buttons in mobile/tablet view */
+            /* .navbar-actions-wrapper {
+                display: none !important;
+            } */
+        }
     </style>
     <link rel="stylesheet" href="assets/css/animations.css?v=1">
 </head>
 
 <body>
+
+    
+
+    <!-- Mobile Navigation Menu -->
+    <nav class="mobile-nav-menu" id="mobile-nav-menu">
+        <button class="mobile-menu-close" id="mobile-menu-close">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul class="nav-links">
+            <li><a href="index.html">Home 1</a></li>
+            <li><a href="home-2.html">Home 2</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="programs.html">Programs</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="dashboard.html"
+                    class="btn btn-outline-primary px-3 py-1 rounded-pill d-block mt-2">Dashboard</a></li>
+            <li><a href="signup.html" class="btn btn-primary px-3 py-1 rounded-pill d-block mt-2">Sign Up</a></li>
+        </ul>
+    </nav>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
 
     <!-- Navbar -->
     <nav class="navbar navbar-on-dark">
@@ -89,29 +295,44 @@
                     <ul class="dropdown-menu position-absolute bg-white shadow-lg p-2 rounded"
                         style="display: none; top: 100%; left: 0; min-width: 200px; list-style: none;">
                         <li><a href="index.html" class="d-block p-2 text-primary hover-bg-light rounded">Home 1</a></li>
-                        <li><a href="home-2.html" class="d-block p-2 text-primary fw-bold hover-bg-light rounded">Home 2</a></li>
+                        <li><a href="home-2.html" class="d-block p-2 text-primary fw-bold hover-bg-light rounded">Home
+                                2</a></li>
                     </ul>
                 </div>
-                <a href="programs.html" class="nav-link">Programs</a>
                 <a href="about.html" class="nav-link">About</a>
+                <a href="programs.html" class="nav-link">Programs</a>                
                 <a href="pricing.html" class="nav-link">Pricing</a>
                 <a href="blog.html" class="nav-link">Blog</a>
                 <a href="contact.html" class="nav-link">Contact</a>
             </div>
 
             <div class="navbar-actions-wrapper d-flex align-items-center gap-3">
-                <button id="theme-toggle" class="btn btn-outline p-2 border-0 rounded-circle" aria-label="Toggle Theme">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <a href="dashboard.html" class="btn btn-outline-primary px-3 py-1 rounded-pill">Dashboard</a>
-                <a href="signup.html" class="btn btn-primary d-none d-sm-inline-flex px-4 py-2"
-                    style="font-size: 0.9rem;">Sign Up</a>
 
-                <!-- Mobile Menu Button -->
-                <button id="menu-toggle" class="d-lg-none btn btn-outline border-0 text-primary">
-                    <i class="fas fa-bars fa-lg"></i>
-                </button>
-            </div>
+    <!-- Theme Toggle -->
+    <button id="theme-toggle"
+        class="btn btn-outline theme-toggle p-2 border-0 rounded-circle"
+        aria-label="Toggle Theme">
+        <i class="fas fa-sun"></i>
+    </button>
+
+    <!-- Desktop Buttons -->
+    <a href="dashboard.html"
+        class="btn btn-outline-primary px-3 py-1 rounded-pill d-none d-lg-inline-flex">
+        Dashboard
+    </a>
+
+    <a href="signup.html"
+        class="btn btn-primary d-none d-lg-inline-flex px-4 py-2"
+        style="font-size: 0.9rem;">
+        Sign Up
+    </a>
+
+    <!-- Hamburger (Mobile Only) -->
+    <button class="mobile-menu-toggle d-lg-none" id="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+</div>
         </div>
     </nav>
 
@@ -195,58 +416,104 @@
     </section>
 
     <!-- Upcoming Events -->
-    <section class="section-padding bg-light">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="h1 mb-3">Upcoming Events</h2>
-                <a href="programs.html" class="btn btn-outline text-dark">View Calendar</a>
-            </div>
+<section class="section-padding bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="h1 mb-3">Upcoming Events</h2>
+            <a href="programs.html" class="btn btn-outline text-dark">View Calendar</a>
+        </div>
 
-            <div class="d-flex flex-column gap-3 justify-content-center">
-                <!-- Event Item -->
-                <div class="card border-0 shadow-sm p-4 d-flex flex-row align-items-center gap-4 hover-lift">
-                    <div class="text-center px-4 border-end">
+        <div class="d-flex flex-column gap-4">
+
+            <!-- Event 1 -->
+            <div class="card border-0 shadow-sm p-4 hover-lift">
+                <div class="d-flex flex-column flex-md-row align-items-center align-items-md-center gap-4 text-center text-md-start">
+
+
+                    <!-- Date -->
+                    <div class="text-center px-4 border-md-end border-bottom pb-3 pb-md-0">
                         <span class="d-block h2 fw-bold text-primary mb-0">15</span>
                         <span class="text-uppercase small fw-bold text-secondary">Aug</span>
                     </div>
-                    <div class="flex-grow-1">
-                        <h4 class="mb-1">Weekend Surf Safari</h4>
-                        <p class="text-secondary small mb-0"><i class="fas fa-map-marker-alt me-1"></i> Huntington Beach
-                            • 2 Days</p>
-                    </div>
-                    <a href="#" class="btn btn-sm btn-primary rounded-pill px-4">Register</a>
-                </div>
 
-                <!-- Event Item -->
-                <div class="card border-0 shadow-sm p-4 d-flex flex-row align-items-center gap-4 hover-lift">
-                    <div class="text-center px-4 border-end">
+                    <!-- Content -->
+                    <div class="flex-grow-1 text-center text-md-start">
+                        <h4 class="mb-1">Weekend Surf Safari</h4>
+                        <p class="text-secondary small mb-3 mb-md-0">
+                            <i class="fas fa-map-marker-alt me-1"></i>
+                            Huntington Beach • 2 Days
+                        </p>
+                    </div>
+
+                    <!-- Button -->
+                    <div class="text-md-end">
+    <a href="#" class="btn btn-primary rounded-pill px-4 py-2">
+        Register
+    </a>
+</div>
+
+                </div>
+            </div>
+
+            <!-- Event 2 -->
+            <div class="card border-0 shadow-sm p-4 hover-lift">
+                <div class="d-flex flex-column flex-md-row align-items-center align-items-md-center gap-4 text-center text-md-start">
+
+
+                    <div class="text-center px-4 border-md-end border-bottom pb-3 pb-md-0">
                         <span class="d-block h2 fw-bold text-primary mb-0">22</span>
                         <span class="text-uppercase small fw-bold text-secondary">Aug</span>
                     </div>
-                    <div class="flex-grow-1">
+
+                    <div class="flex-grow-1 text-center text-md-start">
                         <h4 class="mb-1">Women's Wahine Workshop</h4>
-                        <p class="text-secondary small mb-0"><i class="fas fa-map-marker-alt me-1"></i> Malibu • 1 Day
+                        <p class="text-secondary small mb-3 mb-md-0">
+                            <i class="fas fa-map-marker-alt me-1"></i>
+                            Malibu • 1 Day
                         </p>
                     </div>
-                    <a href="#" class="btn btn-sm btn-primary rounded-pill px-4">Register</a>
-                </div>
 
-                <!-- Event Item -->
-                <div class="card border-0 shadow-sm p-4 d-flex flex-row align-items-center gap-4 hover-lift">
-                    <div class="text-center px-4 border-end">
+                    <div class="text-md-end">
+    <a href="#" class="btn btn-primary rounded-pill px-4 py-2">
+        Register
+    </a>
+</div>
+
+
+                </div>
+            </div>
+
+            <!-- Event 3 -->
+            <div class="card border-0 shadow-sm p-4 hover-lift">
+                <div class="d-flex flex-column flex-md-row align-items-center align-items-md-center gap-4 text-center text-md-start">
+
+
+                    <div class="text-center px-4 border-md-end border-bottom pb-3 pb-md-0">
                         <span class="d-block h2 fw-bold text-primary mb-0">05</span>
                         <span class="text-uppercase small fw-bold text-secondary">Sep</span>
                     </div>
-                    <div class="flex-grow-1">
+
+                    <div class="flex-grow-1 text-center text-md-start">
                         <h4 class="mb-1">Pro Technique Masterclass</h4>
-                        <p class="text-secondary small mb-0"><i class="fas fa-map-marker-alt me-1"></i> Trestles • 3
-                            Days</p>
+                        <p class="text-secondary small mb-3 mb-md-0">
+                            <i class="fas fa-map-marker-alt me-1"></i>
+                            Trestles • 3 Days
+                        </p>
                     </div>
-                    <a href="#" class="btn btn-sm btn-primary rounded-pill px-4">Register</a>
+
+                    <div class="text-md-end">
+    <a href="#" class="btn btn-primary rounded-pill px-4 py-2">
+        Register
+    </a>
+</div>
+
+
                 </div>
             </div>
+
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- FAQ Section -->
     <section class="section-padding">
@@ -385,7 +652,7 @@
     <script src="assets/js/theme-toggle.js"></script>
     <script src="assets/js/animations.js"></script>
     <script src="assets/js/main.js"></script>
-    
+
     <script>
         // Scroll to top function
         function scrollToTop() {
@@ -396,12 +663,51 @@
         }
 
         // Show/hide scroll-to-top button based on scroll position
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const scrollButton = document.getElementById('scrollToTop');
             if (window.pageYOffset > 300) {
                 scrollButton.style.display = 'flex';
             } else {
                 scrollButton.style.display = 'none';
+            }
+        });
+
+        // Mobile menu toggle functionality
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileNavMenu = document.getElementById('mobile-nav-menu');
+        const overlay = document.getElementById('overlay');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileNavMenu.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
+
+        mobileMenuClose.addEventListener('click', () => {
+            mobileNavMenu.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // Close mobile menu when clicking overlay
+        overlay.addEventListener('click', () => {
+            mobileNavMenu.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // Close mobile menu when clicking a link
+        const navLinks = document.querySelectorAll('.nav-links a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNavMenu.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+        });
+
+        // Highlight current page
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        navLinks.forEach(link => {
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
             }
         });
     </script>

@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pricing | Surf School</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='wave' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' style='stop-color:%2300B4D8'/><stop offset='100%25' style='stop-color:%230077B6'/></linearGradient></defs><rect width='32' height='32' fill='%23F8FAFC'/><path fill='url(%23wave)' d='M4 20c2-2 4-2 6 0s4 2 6 0 4-2 6 0 4 2 6 0v-8c-2 2-4 2-6 0s-4-2-6 0-4 2-6 0-4-2-6 0v8z'/><circle cx='16' cy='12' r='2' fill='%2300B4D8'/></svg>">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='wave' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' style='stop-color:%2300B4D8'/><stop offset='100%25' style='stop-color:%230077B6'/></linearGradient></defs><rect width='32' height='32' fill='%23F8FAFC'/><path fill='url(%23wave)' d='M4 20c2-2 4-2 6 0s4 2 6 0 4-2 6 0 4 2 6 0v-8c-2 2-4 2-6 0s-4-2-6 0-4 2-6 0-4-2-6 0v8z'/><circle cx='16' cy='12' r='2' fill='%2300B4D8'/></svg>">
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
@@ -19,9 +20,138 @@
     <link rel="stylesheet" href="assets/css/style.css?v=2">
     <link rel="stylesheet" href="assets/css/dark.css?v=1">
     <link rel="stylesheet" href="assets/css/animations.css?v=1">
+
+    <style>
+        /* Mobile Navigation */
+        .mobile-menu-toggle {
+            display: none;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+        }
+
+        .mobile-nav-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background: var(--surface);
+            border-left: 1px solid var(--border);
+            transition: right 0.3s ease;
+            z-index: 1000;
+            padding: 4rem 1.5rem 2rem;
+            overflow-y: auto;
+        }
+
+        .mobile-nav-menu.active {
+            right: 0;
+        }
+
+        .mobile-nav-menu .logo {
+            display: block;
+            margin-bottom: 2rem;
+            text-decoration: none;
+        }
+
+        .mobile-nav-menu .nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0 0;
+        }
+
+        .mobile-nav-menu .nav-links li {
+            margin-bottom: 1rem;
+        }
+
+        .mobile-nav-menu .nav-links a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-menu .nav-links a:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .mobile-nav-menu .nav-links a.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+            footer {
+                text-align: center;
+            }
+            .row {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+            /* Mobile Logo Size */
+            .logo.h3 {
+                font-size: 1.2rem !important;
+                margin-bottom: 0 !important;
+            }
+
+            .logo i {
+                font-size: 1rem !important;
+                margin-right: 0.5rem !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
+    
+
+
+
+    <!-- Mobile Navigation Menu -->
+    <nav class="mobile-nav-menu" id="mobile-nav-menu">
+       
+        <ul class="nav-links">
+            <li><a href="index.html">Home1</a></li>
+            <li><a href="home-2.html">Home2</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="programs.html">Programs</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="dashboard.html"
+                    class="btn btn-outline-primary px-3 py-1 rounded-pill d-block mt-2">Dashboard</a></li>
+            <li><a href="signup.html" class="btn btn-primary px-3 py-1 rounded-pill d-block mt-2">Sign Up</a></li>
+        </ul>
+    </nav>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
     <!-- Navbar -->
     <nav class="navbar navbar-on-dark">
         <div class="container d-flex justify-content-between align-items-center">
@@ -41,26 +171,40 @@
                         <li><a href="home-2.html" class="d-block p-2 text-dark hover-bg-light rounded">Home 2</a></li>
                     </ul>
                 </div>
-                <a href="programs.html" class="nav-link">Programs</a>
                 <a href="about.html" class="nav-link">About</a>
+                <a href="programs.html" class="nav-link">Programs</a>                
                 <a href="pricing.html" class="nav-link active">Pricing</a>
                 <a href="blog.html" class="nav-link">Blog</a>
                 <a href="contact.html" class="nav-link">Contact</a>
             </div>
 
             <div class="navbar-actions-wrapper d-flex align-items-center gap-3">
-                <button id="theme-toggle" class="btn btn-outline p-2 border-0 rounded-circle" aria-label="Toggle Theme">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <a href="dashboard.html" class="btn btn-outline-primary px-3 py-1 rounded-pill">Dashboard</a>
-                <a href="signup.html" class="btn btn-primary d-none d-sm-inline-flex px-4 py-2"
-                    style="font-size: 0.9rem;">Sign Up</a>
 
-                <!-- Mobile Menu Button -->
-                <button id="menu-toggle" class="d-lg-none btn btn-outline border-0 text-primary">
-                    <i class="fas fa-bars fa-lg"></i>
-                </button>
-            </div>
+    <!-- Theme Toggle -->
+    <button id="theme-toggle"
+        class="btn btn-outline theme-toggle p-2 border-0 rounded-circle"
+        aria-label="Toggle Theme">
+        <i class="fas fa-sun"></i>
+    </button>
+
+    <!-- Desktop Buttons -->
+    <a href="dashboard.html"
+        class="btn btn-outline-primary px-3 py-1 rounded-pill d-none d-lg-inline-flex">
+        Dashboard
+    </a>
+
+    <a href="signup.html"
+        class="btn btn-primary d-none d-lg-inline-flex px-4 py-2"
+        style="font-size: 0.9rem;">
+        Sign Up
+    </a>
+
+    <!-- Hamburger (Mobile Only) -->
+    <button class="mobile-menu-toggle d-lg-none" id="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+</div>
         </div>
     </nav>
 
@@ -68,7 +212,8 @@
 
 
     <!-- Hero Section -->
-    <header class="hero d-flex align-items-center position-relative bg-light text-center" style="min-height: 40vh; padding: 60px 0;">
+    <header class="hero d-flex align-items-center position-relative bg-light text-center"
+        style="min-height: 40vh; padding: 60px 0;">
         <div class="container">
             <h1 class="display-3 fw-bold mb-3">Simple Pricing</h1>
             <p class="lead text-secondary">Choose a package that fits your goals.</p>
@@ -80,7 +225,7 @@
         <div class="container">
             <div class="row g-4 justify-content-center align-items-center card-grid-stagger">
                 <!-- Single Session -->
-                <div class="col-lg-4 col-md-6 order-2 order-lg-1">
+                <div class="col-lg-4 col-12 order-2 order-lg-1">
                     <div class="card border-0 shadow-sm p-4 text-center h-100">
                         <h3 class="h5 text-secondary mb-2">Single Lesson</h3>
                         <div class="display-4 fw-bold text-dark mb-4">$60</div>
@@ -97,7 +242,7 @@
                 </div>
 
                 <!-- Package -->
-                <div class="col-lg-4 col-md-6 order-1 order-lg-2">
+                <div class="col-lg-4 col-12 order-1 order-lg-2">
                     <div class="card border-primary shadow-lg p-5 text-center transform-scale-110 position-relative"
                         style="z-index: 10;">
                         <span
@@ -119,7 +264,7 @@
                 </div>
 
                 <!-- Private -->
-                <div class="col-lg-4 col-md-6 order-3 order-lg-3">
+                <div class="col-lg-4 col-12 order-3 order-lg-3">
                     <div class="card border-0 shadow-sm p-4 text-center h-100">
                         <h3 class="h5 text-secondary mb-2">Video Analysis</h3>
                         <div class="display-4 fw-bold text-dark mb-4">$100</div>
@@ -237,6 +382,42 @@
     <script src="assets/js/theme-toggle.js"></script>
     <script src="assets/js/animations.js"></script>
     <script src="assets/js/main.js"></script>
+
+    <script>
+        // Mobile menu toggle functionality
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileNavMenu = document.getElementById('mobile-nav-menu');
+        const overlay = document.getElementById('overlay');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileNavMenu.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking overlay
+        overlay.addEventListener('click', () => {
+            mobileNavMenu.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        // Close mobile menu when clicking a link
+        const navLinks = document.querySelectorAll('.nav-links a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNavMenu.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+        });
+
+        // Highlight current page
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        navLinks.forEach(link => {
+            const linkPage = link.getAttribute('href');
+            if (linkPage === currentPage) {
+                link.classList.add('active');
+            }
+        });
+    </script>
 </body>
 
 </html>

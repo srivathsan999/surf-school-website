@@ -1,14 +1,12 @@
 /**
  * Theme Toggle Functionality
- * Handles Light/Dark mode switching with localStorage persistence
  */
 
 const themeToggle = document.getElementById('theme-toggle');
+const themeToggleMobile = document.getElementById('theme-toggle-mobile');
 const htmlElement = document.documentElement;
-const iconSun = document.querySelector('.icon-sun');
-const iconMoon = document.querySelector('.icon-moon');
 
-// Check localStorage or system preference
+// Get saved theme or system preference
 const storedTheme = localStorage.getItem('theme');
 const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 const initialTheme = storedTheme || systemTheme;
@@ -17,35 +15,35 @@ const initialTheme = storedTheme || systemTheme;
 function setTheme(theme) {
     htmlElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
-    updateIcon(theme);
+    updateIcons(theme);
 }
 
-function updateIcon(theme) {
-    if (!themeToggle) return;
+// Update both icons
+function updateIcons(theme) {
+    const iconHTML = theme === 'dark'
+        ? '<i class="fas fa-sun"></i>'
+        : '<i class="fas fa-moon"></i>';
 
-    // Simple text based toggle for now, usually you'd toggle classes on icons
-    if (theme === 'dark') {
-        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-        // Or if using specific icon elements
-        if (iconSun) iconSun.style.display = 'block';
-        if (iconMoon) iconMoon.style.display = 'none';
-        themeToggle.setAttribute('aria-label', 'Switch to light mode');
-    } else {
-        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-        if (iconSun) iconSun.style.display = 'none';
-        if (iconMoon) iconMoon.style.display = 'block';
-        themeToggle.setAttribute('aria-label', 'Switch to dark mode');
-    }
+    if (themeToggle) themeToggle.innerHTML = iconHTML;
+    if (themeToggleMobile) themeToggleMobile.innerHTML = iconHTML;
 }
 
-// Initial set
+// Initial theme load
 setTheme(initialTheme);
 
-// Event Listener
+// Toggle function
+function toggleTheme() {
+    const currentTheme = htmlElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+}
+
+// Desktop button
 if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-        const currentTheme = htmlElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        setTheme(newTheme);
-    });
+    themeToggle.addEventListener('click', toggleTheme);
+}
+
+// Mobile button
+if (themeToggleMobile) {
+    themeToggleMobile.addEventListener('click', toggleTheme);
 }

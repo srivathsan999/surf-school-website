@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up | SurfSchool</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='wave' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' style='stop-color:%2300B4D8'/><stop offset='100%25' style='stop-color:%230077B6'/></linearGradient></defs><rect width='32' height='32' fill='%23F8FAFC'/><path fill='url(%23wave)' d='M4 20c2-2 4-2 6 0s4 2 6 0 4-2 6 0 4 2 6 0v-8c-2 2-4 2-6 0s-4-2-6 0-4 2-6 0-4-2-6 0v8z'/><circle cx='16' cy='12' r='2' fill='%2300B4D8'/></svg>">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='wave' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' style='stop-color:%2300B4D8'/><stop offset='100%25' style='stop-color:%230077B6'/></linearGradient></defs><rect width='32' height='32' fill='%23F8FAFC'/><path fill='url(%23wave)' d='M4 20c2-2 4-2 6 0s4 2 6 0 4-2 6 0 4 2 6 0v-8c-2 2-4 2-6 0s-4-2-6 0-4 2-6 0-4-2-6 0v8z'/><circle cx='16' cy='12' r='2' fill='%2300B4D8'/></svg>">
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
@@ -17,51 +18,6 @@
     <link rel="stylesheet" href="assets/css/style.css?v=2">
     <link rel="stylesheet" href="assets/css/dark.css?v=1">
     <style>
-        /* Scroll to Top Button */
-        .scroll-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: var(--primary);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 1000;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-lg);
-            border: none;
-            font-size: 1.2rem;
-        }
-
-        .scroll-to-top:hover {
-            background: var(--primary-dark);
-            transform: translateY(-3px);
-        }
-
-        @media (max-width: 768px) {
-            .scroll-to-top {
-                bottom: 1rem;
-                right: 1rem;
-                width: 45px;
-                height: 45px;
-                font-size: 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .scroll-to-top {
-                bottom: 0.75rem;
-                right: 0.75rem;
-                width: 40px;
-                height: 40px;
-                font-size: 0.9rem;
-            }
-        }
     </style>
     <style>
         .auth-container {
@@ -89,20 +45,33 @@
         }
 
         .theme-toggle {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: all 0.3s ease;
             z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+
+        @media (max-width: 768px) {
+            .theme-toggle {
+                top: 1rem;
+                right: 1rem;
+                width: 40px;
+                height: 40px;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+            }
         }
 
         .theme-toggle:hover {
@@ -126,6 +95,8 @@
 </head>
 
 <body>
+
+
     <!-- Theme Toggle -->
     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
         <i class="fas fa-moon" id="theme-icon"></i>
@@ -145,7 +116,8 @@
                 <div class="mb-3">
                     <div class="row g-2">
                         <div class="col-6">
-                            <input type="text" class="form-control p-3 bg-light border-0 rounded-3" placeholder="John Doe">
+                            <input type="text" class="form-control p-3 bg-light border-0 rounded-3"
+                                placeholder="John Doe">
                         </div>
                         <div class="col-6">
                             <input type="email" class="form-control p-3 bg-light border-0 rounded-3"
@@ -166,8 +138,8 @@
                     </div>
                 </div>
                 <div class="mb-4">
-                      <input type="checkbox" required> I agree to the <a href="#"
-                            class="text-primary text-decoration-none">Terms & Conditions</a>
+                    <input type="checkbox" required> I agree to the <a href="#"
+                        class="text-primary text-decoration-none">Terms & Conditions</a>
                     </label>
                 </div>
                 <button class="btn btn-primary w-100 rounded-pill py-3 mb-4">Create Account</button>
@@ -200,31 +172,10 @@
         </div>
     </div>
 
-    <!-- Scroll to Top Button -->
-    <button class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()">
-        <i class="fas fa-arrow-up"></i>
-    </button>
 
     <script src="assets/js/theme-toggle.js"></script>
-    
-    <script>
-        // Scroll to top function
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
 
-        // Show/hide scroll-to-top button based on scroll position
-        window.addEventListener('scroll', function() {
-            const scrollButton = document.getElementById('scrollToTop');
-            if (window.pageYOffset > 300) {
-                scrollButton.style.display = 'flex';
-            } else {
-                scrollButton.style.display = 'none';
-            }
-        });
+    <script>
     </script>
 </body>
 

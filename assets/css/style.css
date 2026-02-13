@@ -676,6 +676,25 @@ img {
     transition: all 0.3s ease;
 }
 
+@media (max-width: 991px) {
+    #theme-toggle.theme-toggle {
+         background: var(--surface);
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow-sm);
+        margin-left: 0;
+    }
+
+    #theme-toggle.theme-toggle i {
+        color: var(--primary);
+    }
+}
+
 .navbar+*:not(#mobile-menu) {
     margin-top: 0 !important;
     padding-top: 0 !important;
