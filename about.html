@@ -84,17 +84,6 @@
             margin-right: 0 !important;
         }
 
-        /* Footer Row Padding Removal */
-        footer .row {
-            padding-left: 0 !important;
-            padding-right: 0 !important;
-        }
-
-        /* Footer Center Alignment */
-        footer {
-            text-align: center;
-        }
-
         /* Hero Section Responsive */
         @media (max-width: 992px) {
             .hero {
@@ -105,16 +94,6 @@
                 justify-content: center;
                 padding-top: 5rem !important;
             }
-        }
-
-        /* Social Icons Center and Twitter Icon Update */
-        footer .d-flex.gap-3 {
-            justify-content: center;
-        }
-
-        footer .fab.fa-twitter {
-            font-family: 'Font Awesome 6 Brands';
-            font-weight: 400;
         }
 
         /* Mobile Navigation */
@@ -128,10 +107,12 @@
             font-size: 1.2rem;
             color: var(--text-primary);
         }
+
         .row {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-}
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
+
         .mobile-nav-menu {
             position: fixed;
             top: 0;
@@ -213,53 +194,57 @@
         .overlay.active {
             display: block;
         }
+
         @media (max-width: 991px) {
 
-    #theme-toggle {
-        background: var(--surface);
-        border: 1px solid var(--border);
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 8px;
-    }
+            #theme-toggle {
+                background: var(--surface);
+                border: 1px solid var(--border);
+                width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 8px;
+            }
 
-      /* Hide only dashboard & signup */
-    .navbar-actions-wrapper a {
-        display: none !important;
-    }
-}
+            /* Hide only dashboard & signup */
+            .navbar-actions-wrapper a {
+                display: none !important;
+            }
+        }
+
         @media (max-width: 768px) {
 
-    /* Center entire section */
-    .section-padding .card-body {
-        text-align: center;
-    }
+            /* Center entire section */
+            .section-padding .card-body {
+                text-align: center;
+            }
 
-    /* Center list items */
-    .section-padding .card-body ul {
-        padding-left: 0;
-    }
+            /* Center list items */
+            .section-padding .card-body ul {
+                padding-left: 0;
+            }
 
-    .section-padding .card-body ul li {
-        justify-content: center;
-        text-align: center;
-    }
+            .section-padding .card-body ul li {
+                justify-content: center;
+                text-align: center;
+            }
 
-}
+        }
+
         @media (max-width: 768px) {
             .mobile-menu-toggle {
                 display: block;
             }
+
             .hero .col-lg-6 {
                 padding: 30px 0;
             }
-           
+
 
             /* Hide desktop navbar buttons in mobile/tablet view */
-            
+
         }
     </style>
     <link rel="stylesheet" href="assets/css/animations.css?v=1">
@@ -267,9 +252,9 @@
 
 <body>
 
-    
 
-    
+
+
 
     <!-- Mobile Navigation Menu -->
     <nav class="mobile-nav-menu" id="mobile-nav-menu">
@@ -313,7 +298,7 @@
                     </ul>
                 </div>
                 <a href="about.html" class="nav-link active">About</a>
-                <a href="programs.html" class="nav-link">Programs</a>                
+                <a href="programs.html" class="nav-link">Programs</a>
                 <a href="pricing.html" class="nav-link">Pricing</a>
                 <a href="blog.html" class="nav-link">Blog</a>
                 <a href="contact.html" class="nav-link">Contact</a>
@@ -321,31 +306,28 @@
 
             <div class="navbar-actions-wrapper d-flex align-items-center gap-3">
 
-    <!-- Theme Toggle -->
-    <button id="theme-toggle"
-        class="btn btn-outline theme-toggle p-2 border-0 rounded-circle"
-        aria-label="Toggle Theme">
-        <i class="fas fa-sun"></i>
-    </button>
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" class="btn btn-outline theme-toggle p-2 border-0 rounded-circle"
+                    aria-label="Toggle Theme">
+                    <i class="fas fa-sun"></i>
+                </button>
 
-    <!-- Desktop Buttons -->
-    <a href="dashboard.html"
-        class="btn btn-outline-primary px-3 py-1 rounded-pill d-none d-lg-inline-flex">
-        Dashboard
-    </a>
+                <!-- Desktop Buttons -->
+                <a href="dashboard.html" class="btn btn-outline-primary px-3 py-1 rounded-pill d-none d-lg-inline-flex">
+                    Dashboard
+                </a>
 
-    <a href="signup.html"
-        class="btn btn-primary d-none d-lg-inline-flex px-4 py-2"
-        style="font-size: 0.9rem;">
-        Sign Up
-    </a>
+                <a href="signup.html" class="btn btn-primary d-none d-lg-inline-flex px-4 py-2"
+                    style="font-size: 0.9rem;">
+                    Sign Up
+                </a>
 
-    <!-- Hamburger (Mobile Only) -->
-    <button class="mobile-menu-toggle d-lg-none" id="mobile-menu-toggle">
-        <i class="fas fa-bars"></i>
-    </button>
+                <!-- Hamburger (Mobile Only) -->
+                <button class="mobile-menu-toggle d-lg-none" id="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
 
-</div>
+            </div>
         </div>
     </nav>
 

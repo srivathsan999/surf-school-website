@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>How to Read a Forecast | Surf School</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='wave' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' style='stop-color:%2300B4D8'/><stop offset='100%25' style='stop-color:%230077B6'/></linearGradient></defs><rect width='32' height='32' fill='%23F8FAFC'/><path fill='url(%23wave)' d='M4 20c2-2 4-2 6 0s4 2 6 0 4-2 6 0 4 2 6 0v-8c-2 2-4 2-6 0s-4-2-6 0-4 2-6 0-4-2-6 0v8z'/><circle cx='16' cy='12' r='2' fill='%2300B4D8'/></svg>">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='wave' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' style='stop-color:%2300B4D8'/><stop offset='100%25' style='stop-color:%230077B6'/></linearGradient></defs><rect width='32' height='32' fill='%23F8FAFC'/><path fill='url(%23wave)' d='M4 20c2-2 4-2 6 0s4 2 6 0 4-2 6 0 4 2 6 0v-8c-2 2-4 2-6 0s-4-2-6 0-4 2-6 0-4-2-6 0v8z'/><circle cx='16' cy='12' r='2' fill='%2300B4D8'/></svg>">
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
@@ -16,38 +17,39 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css?v=2">
     <link rel="stylesheet" href="assets/css/dark.css?v=1">
-    
+
     <style>
         /* Mobile Navigation */
-.mobile-menu-toggle {
-    display: none;
-   background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    font-size: 1.2rem;
-    color: var(--text-primary);
-}
+        .mobile-menu-toggle {
+            display: none;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+        }
 
-.mobile-nav-menu {
-    position: fixed;
-    top: 0;
-    right: -100%;   /* 🔥 slide from right */
-    left: auto;
-    width: 280px;
-    height: 100vh;
-    background: var(--surface);
-    border-left: 1px solid var(--border);
-    transition: right 0.3s ease;
-    z-index: 1000;
-    padding: 4rem 1.5rem 2rem;
-    overflow-y: auto;
-}
+        .mobile-nav-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            /* 🔥 slide from right */
+            left: auto;
+            width: 280px;
+            height: 100vh;
+            background: var(--surface);
+            border-left: 1px solid var(--border);
+            transition: right 0.3s ease;
+            z-index: 1000;
+            padding: 4rem 1.5rem 2rem;
+            overflow-y: auto;
+        }
 
-.mobile-nav-menu.active {
-    right: 0;
-}
+        .mobile-nav-menu.active {
+            right: 0;
+        }
 
         .mobile-nav-menu .logo {
             display: block;
@@ -98,57 +100,56 @@
         .overlay.active {
             display: block;
         }
+
         /* Mobile Logo Size */
-@media (max-width: 768px) {
-    .logo.h3 {
-        font-size: 1.2rem !important;
-        margin-bottom: 0 !important;
-    }
+        @media (max-width: 768px) {
+            .logo.h3 {
+                font-size: 1.2rem !important;
+                margin-bottom: 0 !important;
+            }
 
-    .logo i {
-        font-size: 1rem !important;
-        margin-right: 0.5rem !important;
-    }
-}
+            .logo i {
+                font-size: 1rem !important;
+                margin-right: 0.5rem !important;
+            }
+        }
 
-@media (max-width: 991px) {
-    .mobile-menu-toggle {
-        display: block;
-    }
-    /* Show theme toggle as fixed button */
-    #theme-toggle {
-       background: var(--surface);
-        border: 1px solid var(--border);
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 8px;
-    }
+        @media (max-width: 991px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
 
-    .navbar-nav-wrapper {
-        display: none !important;
-    }
-}
+            /* Show theme toggle as fixed button */
+            #theme-toggle {
+                background: var(--surface);
+                border: 1px solid var(--border);
+                width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 8px;
+            }
+
+            .navbar-nav-wrapper {
+                display: none !important;
+            }
+        }
+
         @media (max-width: 768px) {
             .mobile-menu-toggle {
                 display: block;
             }
-            footer {
-                text-align: center;
-            }
         }
-        
     </style>
 </head>
 
 <body>
-    
+
 
     <!-- Mobile Navigation Menu -->
     <nav class="mobile-nav-menu" id="mobile-nav-menu">
-        
+
         <ul class="nav-links">
             <li><a href="index.html">Home1</a></li>
             <li><a href="home-2.html">Home2</a></li>
@@ -195,31 +196,28 @@
 
             <div class="navbar-actions-wrapper d-flex align-items-center gap-3">
 
-    <!-- Theme Toggle -->
-    <button id="theme-toggle"
-        class="btn btn-outline theme-toggle p-2 border-0 rounded-circle"
-        aria-label="Toggle Theme">
-        <i class="fas fa-sun"></i>
-    </button>
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" class="btn btn-outline theme-toggle p-2 border-0 rounded-circle"
+                    aria-label="Toggle Theme">
+                    <i class="fas fa-sun"></i>
+                </button>
 
-    <!-- Desktop Buttons -->
-    <a href="dashboard.html"
-        class="btn btn-outline-primary px-3 py-1 rounded-pill d-none d-lg-inline-flex">
-        Dashboard
-    </a>
+                <!-- Desktop Buttons -->
+                <a href="dashboard.html" class="btn btn-outline-primary px-3 py-1 rounded-pill d-none d-lg-inline-flex">
+                    Dashboard
+                </a>
 
-    <a href="signup.html"
-        class="btn btn-primary d-none d-lg-inline-flex px-4 py-2"
-        style="font-size: 0.9rem;">
-        Sign Up
-    </a>
+                <a href="signup.html" class="btn btn-primary d-none d-lg-inline-flex px-4 py-2"
+                    style="font-size: 0.9rem;">
+                    Sign Up
+                </a>
 
-    <!-- Hamburger (Mobile Only) -->
-    <button class="mobile-menu-toggle d-lg-none" id="mobile-menu-toggle">
-        <i class="fas fa-bars"></i>
-    </button>
+                <!-- Hamburger (Mobile Only) -->
+                <button class="mobile-menu-toggle d-lg-none" id="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
 
-</div>
+            </div>
         </div>
     </nav>
 
@@ -363,7 +361,7 @@
     <script src="assets/js/theme-toggle.js"></script>
     <script src="assets/js/blog-details.js"></script>
     <script src="assets/js/main.js"></script>
-    
+
     <script>
         // Mobile menu toggle functionality
         const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
