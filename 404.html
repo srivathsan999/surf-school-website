@@ -143,41 +143,15 @@
 
     <script src="assets/js/theme-toggle.js"></script>
 
-    <script>
-        // Mobile menu toggle functionality
-        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-        const mobileNavMenu = document.getElementById('mobile-nav-menu');
-        const overlay = document.getElementById('overlay');
-
-        mobileMenuToggle.addEventListener('click', () => {
-            mobileNavMenu.classList.toggle('active');
-            overlay.classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking overlay
-        overlay.addEventListener('click', () => {
-            mobileNavMenu.classList.remove('active');
-            overlay.classList.remove('active');
-        });
-
-        // Close mobile menu when clicking a link
-        const navLinks = document.querySelectorAll('.nav-links a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileNavMenu.classList.remove('active');
-                overlay.classList.remove('active');
-            });
-        });
-
-        // Highlight current page
-        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-        navLinks.forEach(link => {
-            const linkPage = link.getAttribute('href');
-            if (linkPage === currentPage) {
-                link.classList.add('active');
-            }
-        });
-    </script>
+        
+	<script src="assets/js/main.js"></script>
 </body>
 
 </html>
+
+
+
+
+
+
+

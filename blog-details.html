@@ -111,7 +111,7 @@
             }
         }
 
-        @media (max-width: 991px) {
+        @media (max-width: 1199px) {
             .mobile-menu-toggle {
                 display: block;
             }
@@ -173,7 +173,7 @@
                 </a>
             </div>
 
-            <div class="navbar-nav-wrapper d-none d-lg-flex align-items-center gap-4">
+            <div class="navbar-nav-wrapper d-none d-xl-flex align-items-center gap-4">
                 <div class="dropdown position-relative">
                     <a href="#" class="nav-link dropdown-toggle">Home <i class="fas fa-chevron-down ms-1"
                             style="font-size: 0.8em;"></i></a>
@@ -200,17 +200,17 @@
                 </button>
 
                 <!-- Desktop Buttons -->
-                <a href="dashboard.html" class="btn btn-outline-primary px-3 py-1 rounded-pill d-none d-lg-inline-flex">
+                <a href="dashboard.html" class="btn btn-outline-primary px-3 py-1 rounded-pill d-none d-xl-inline-flex">
                     Dashboard
                 </a>
 
-                <a href="signup.html" class="btn btn-primary d-none d-lg-inline-flex px-4 py-2"
+                <a href="signup.html" class="btn btn-primary d-none d-xl-inline-flex px-4 py-2"
                     style="font-size: 0.9rem;">
                     Sign Up
                 </a>
 
                 <!-- Hamburger (Mobile Only) -->
-                <button class="mobile-menu-toggle d-lg-none" id="mobile-menu-toggle">
+                <button class="mobile-menu-toggle d-xl-none" id="mobile-menu-toggle">
                     <i class="fas fa-bars"></i>
                 </button>
 
@@ -266,7 +266,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-4">
+                <div class="col-lg-4 col-md-6">
                     <div class="sticky-top" style="top: 100px;">
                         <div class="card border-0 shadow-sm p-4 mb-4">
                             <h4 class="h5 fw-bold mb-3">Categories</h4>
@@ -297,7 +297,7 @@
     <footer class="bg-dark text-white pt-5 pb-3">
         <div class="container">
             <div class="row g-5 mb-5">
-                <div class="col-lg-4">
+                <div class="col-lg-4 col-md-6">
                     <a href="index.html" class="h3 fw-bold text-white text-decoration-none mb-4 d-block">
                         <i class="fa-solid fa-water text-accent me-2"></i>SurfSchool
                     </a>
@@ -314,7 +314,7 @@
                                 class="fab fa-twitter"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-4">
+                <div class="col-lg-2 col-md-6">
                     <h4 class="h6 text-accent text-uppercase fw-bold mb-4">Programs</h4>
                     <ul class="d-flex flex-column gap-2">
                         <li><a href="programs.html" class="text-white-50 text-decoration-none hover-text-white">Beginner
@@ -327,7 +327,7 @@
                                 Camps</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-2 col-md-4">
+                <div class="col-lg-2 col-md-6">
                     <h4 class="h6 text-accent text-uppercase fw-bold mb-4">Support</h4>
                     <ul class="d-flex flex-column gap-2">
                         <li><a href="contact.html" class="text-white-50 text-decoration-none hover-text-white">Contact
@@ -339,7 +339,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-lg-4 col-md-4">
+                <div class="col-lg-4 col-md-6">
                     <h4 class="h6 text-accent text-uppercase fw-bold mb-4">Newsletter</h4>
                     <p class="text-white-50 mb-3">Subscribe to get the latest surf tips and camp dates.</p>
                     <form action="#" class="d-flex gap-2">
@@ -359,41 +359,14 @@
     <script src="assets/js/blog-details.js"></script>
     <script src="assets/js/main.js"></script>
 
-    <script>
-        // Mobile menu toggle functionality
-        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-        const mobileNavMenu = document.getElementById('mobile-nav-menu');
-        const overlay = document.getElementById('overlay');
-
-        mobileMenuToggle.addEventListener('click', () => {
-            mobileNavMenu.classList.toggle('active');
-            overlay.classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking overlay
-        overlay.addEventListener('click', () => {
-            mobileNavMenu.classList.remove('active');
-            overlay.classList.remove('active');
-        });
-
-        // Close mobile menu when clicking a link
-        const navLinks = document.querySelectorAll('.nav-links a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileNavMenu.classList.remove('active');
-                overlay.classList.remove('active');
-            });
-        });
-
-        // Highlight current page
-        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-        navLinks.forEach(link => {
-            const linkPage = link.getAttribute('href');
-            if (linkPage === currentPage) {
-                link.classList.add('active');
-            }
-        });
-    </script>
+        
 </body>
 
 </html>
+
+
+
+
+
+
+

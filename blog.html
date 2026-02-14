@@ -54,7 +54,7 @@
         }
 
         /* Mobile Logo Size */
-        @media (max-width: 768px) {
+        @media (max-width: 1199px) {
             .logo.h3 {
                 font-size: 1.2rem !important;
                 margin-bottom: 0 !important;
@@ -78,7 +78,9 @@
 
         /* Mobile Navigation */
         .mobile-menu-toggle {
-            display: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 8px;
@@ -170,17 +172,15 @@
             display: block;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 1199px) {
             .mobile-menu-toggle {
-                display: block;
+                display: flex;
             }
 
             .mobile-nav-menu.active~#theme-toggle-mobile {
                 opacity: 0.3;
                 pointer-events: none;
             }
-
-
         }
     </style>
 </head>
@@ -193,8 +193,13 @@
             <i class="fas fa-times"></i>
         </button>
         <ul class="nav-links">
-            <li><a href="index.html">Home 1</a></li>
-            <li><a href="home-2.html">Home 2</a></li>
+            <li class="has-submenu">
+                <a href="#" class="submenu-toggle">Home <i class="fas fa-chevron-down ms-2"></i></a>
+                <ul class="submenu" style="display: none; padding-left: 1.5rem; background: rgba(0,0,0,0.05); border-radius: 8px;">
+                    <li><a href="index.html">Home 1</a></li>
+                    <li><a href="home-2.html">Home 2</a></li>
+                </ul>
+            </li>
             <li><a href="about.html">About</a></li>
             <li><a href="programs.html">Programs</a></li>
             <li><a href="pricing.html">Pricing</a></li>
@@ -216,7 +221,7 @@
                 </a>
             </div>
 
-            <div class="navbar-nav-wrapper d-none d-lg-flex align-items-center gap-4">
+            <div class="navbar-nav-wrapper d-none d-xl-flex align-items-center gap-4">
                 <div class="dropdown position-relative">
                     <a href="#" class="nav-link dropdown-toggle">Home <i class="fas fa-chevron-down ms-1"
                             style="font-size: 0.8em;"></i></a>
@@ -242,17 +247,17 @@
                 </button>
 
                 <!-- Desktop Buttons -->
-                <a href="dashboard.html" class="btn btn-outline-primary px-3 py-1 rounded-pill d-none d-lg-inline-flex">
+                <a href="dashboard.html" class="btn btn-outline-primary px-3 py-1 rounded-pill d-none d-xl-inline-flex">
                     Dashboard
                 </a>
 
-                <a href="signup.html" class="btn btn-primary d-none d-lg-inline-flex px-4 py-2"
+                <a href="signup.html" class="btn btn-primary d-none d-xl-inline-flex px-4 py-2"
                     style="font-size: 0.9rem;">
                     Sign Up
                 </a>
 
                 <!-- Hamburger (Mobile Only) -->
-                <button class="mobile-menu-toggle d-lg-none" id="mobile-menu-toggle">
+                <button class="mobile-menu-toggle d-xl-none" id="mobile-menu-toggle">
                     <i class="fas fa-bars"></i>
                 </button>
 
@@ -370,7 +375,7 @@
     <footer class="bg-light text-dark pt-5 pb-3">
         <div class="container">
             <div class="row g-5 mb-5">
-                <div class="col-lg-4">
+                <div class="col-lg-4 col-md-6">
                     <a href="index.html" class="logo text-primary fw-bold h3 mb-4 d-block">
                         <i class="fa-solid fa-water me-2"></i>SurfSchool
                     </a>
@@ -388,7 +393,7 @@
                                 class="fab fa-twitter"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-4">
+                <div class="col-lg-2 col-md-6">
                     <h4 class="h6 text-accent text-uppercase fw-bold mb-4">Programs</h4>
                     <ul class="d-flex flex-column gap-2">
                         <li><a href="programs.html" class="text-secondary text-decoration-none hover-text-dark">Beginner
@@ -401,7 +406,7 @@
                                 Camps</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-2 col-md-4">
+                <div class="col-lg-2 col-md-6">
                     <h4 class="h6 text-accent text-uppercase fw-bold mb-4">Support</h4>
                     <ul class="d-flex flex-column gap-2">
                         <li><a href="contact.html" class="text-secondary text-decoration-none hover-text-dark">Contact
@@ -414,7 +419,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-lg-4 col-md-4">
+                <div class="col-lg-4 col-md-6">
                     <h4 class="h6 text-accent text-uppercase fw-bold mb-4">Newsletter</h4>
                     <p class="text-secondary mb-3">Subscribe to get the latest surf tips and camp dates.</p>
                     <form action="#" class="d-flex gap-2">
@@ -441,64 +446,11 @@
     <script src="assets/js/theme-toggle.js"></script>
     <script src="assets/js/main.js"></script>
 
-    <script>
-        // Scroll to top function
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-
-        // Mobile menu toggle functionality
-        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-        const mobileMenuClose = document.getElementById('mobile-menu-close');
-        const mobileNavMenu = document.getElementById('mobile-nav-menu');
-        const overlay = document.getElementById('overlay');
-
-        mobileMenuToggle.addEventListener('click', () => {
-            mobileNavMenu.classList.toggle('active');
-            overlay.classList.toggle('active');
-        });
-
-        mobileMenuClose.addEventListener('click', () => {
-            mobileNavMenu.classList.remove('active');
-            overlay.classList.remove('active');
-        });
-
-        // Close mobile menu when clicking overlay
-        overlay.addEventListener('click', () => {
-            mobileNavMenu.classList.remove('active');
-            overlay.classList.remove('active');
-        });
-
-        // Close mobile menu when clicking a link
-        const navLinks = document.querySelectorAll('.nav-links a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileNavMenu.classList.remove('active');
-                overlay.classList.remove('active');
-            });
-        });
-
-        // Highlight current page
-        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-        navLinks.forEach(link => {
-            if (link.getAttribute('href') === currentPage) {
-                link.classList.add('active');
-            }
-        });
-
-        // Show/hide scroll-to-top button based on scroll position
-        window.addEventListener('scroll', function () {
-            const scrollButton = document.getElementById('scrollToTop');
-            if (window.pageYOffset > 300) {
-                scrollButton.style.display = 'flex';
-            } else {
-                scrollButton.style.display = 'none';
-            }
-        });
-    </script>
+        
 </body>
 
 </html>
+
+
+
+

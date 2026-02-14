@@ -865,7 +865,7 @@ footer .fab.fa-twitter {
     font-weight: 400 !important;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 767px) {
     footer {
         padding-top: 3rem !important;
         padding-bottom: 2rem !important;
@@ -880,8 +880,9 @@ footer .fab.fa-twitter {
 
     footer .col-lg-4,
     footer .col-lg-2,
+    footer .col-md-6,
     footer .col-md-4 {
-        width: 100%;
+        width: 100% !important;
         margin-bottom: 2rem;
         text-align: center;
     }
@@ -913,6 +914,12 @@ footer .fab.fa-twitter {
         margin-left: auto;
         margin-right: auto;
         max-width: 400px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+    footer .col-md-6 {
+        margin-bottom: 2rem;
     }
 }
 
