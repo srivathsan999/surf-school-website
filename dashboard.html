@@ -1,550 +1,814 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - ComicVerse</title>
-    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap"
+    <title>Student Dashboard | Surf School</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap"
         rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap-grid.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/dark.css">
-    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css?v=2">
+    <link rel="stylesheet" href="assets/css/dark.css?v=1">
     <style>
-        /* Dashboard Side Menu Styles */
-        #dashboard-menu-toggle {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--background);
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        .dashboard-container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .sidebar {
+             width: 280px;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+    position: fixed;
+    height: 100vh;
+    z-index: 1000;
+    left: 0; /* desktop sidebar on left */
+    
+        }
+
+        .sidebar-header {
+            padding: 2rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            font-family: var(--font-heading);
+        }
+
+        .sidebar-menu {
+            flex: 1;
+            padding: 1.5rem 0;
+            overflow-y: auto;
+        }
+
+        .menu-item {
+            display: block;
+            padding: 0.875rem 1.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .menu-item:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .menu-item.active {
+            background-color: var(--primary);
+            color: white;
+            border-left: 4px solid var(--accent);
+        }
+
+        .menu-item i {
+            width: 20px;
+            margin-right: 0.75rem;
+        }
+
+        .sidebar-footer {
+            padding: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .profile-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .profile-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+        }
+
+        .profile-role {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .theme-toggle-btn {
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .content-area {
+            flex: 1;
+            margin-left: 280px;
+            padding: 2rem;
+            overflow-y: auto;
+            background-color: var(--background);
+        }
+
+        .content-header {
+            margin-bottom: 2rem;
+        }
+
+        .content-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-family: var(--font-heading);
+        }
+
+        .content-subtitle {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .forecast-card {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+        }
+
+        .condition-badge {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+/* Mobile Topbar */
+.mobile-topbar {
+    display: none;
+}
+
+
+/* Overlay */
+.sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    z-index: 999;
+}
+
+/* Tablet & Mobile */
+@media (max-width: 991px) {
+
+   .sidebar-header {
+        display: none;
+    }
+    .sidebar-menu {
+        padding: 22% 0;
+    }
+    .mobile-topbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1rem;
+        z-index: 1100;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: var(--text-primary);
+        cursor: pointer;
+    }
+
+    /* ✅ Slide from RIGHT */
+    .sidebar {
+        right: 0;
+        left: auto;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        border-left: 1px solid var(--border);
+        border-right: none;
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .content-area {
+        margin-left: 0;
+        padding: 1.5rem;
+        padding-top: 80px;
+    }
+
+    .sidebar-overlay.active {
+        display: block;
+    }
+}
+
+        .content-section {
             display: none;
-            z-index: 1001;
-            position: relative;
         }
 
-        #dashboard-menu-overlay {
-            z-index: 999;
+        .content-section.active {
+            display: block;
         }
 
-        #dashboard-menu-overlay.active {
-            opacity: 1 !important;
-            visibility: visible !important;
-            pointer-events: all !important;
+        /* Gallery Image Consistency */
+        .gallery-img {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
         }
-
-        #dashboard-side-menu {
+.no-scroll {
+    overflow: hidden;
+}
+        /* Scroll to Top Button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
             z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-lg);
+            border: none;
+            font-size: 1.2rem;
         }
 
-        #dashboard-side-menu.active {
-            left: 0 !important;
+        .scroll-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
         }
 
-        @media (max-width: 1024px) {
-            #dashboard-menu-toggle {
-                display: flex !important;
-                align-items: center;
-                justify-content: center;
+        @media (max-width: 768px) {
+            .scroll-to-top {
+                bottom: 1rem;
+                right: 1rem;
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
             }
-
-            .nav-container {
-                justify-content: space-between !important;
-            }
-
-            /* Hide desktop sidebar on mobile/tablet */
-            .col-lg-3.mb-4 {
-                display: none !important;
-            }
-
-            /* Make main content full width on mobile */
-            .col-lg-9 {
-                width: 100% !important;
-                max-width: 100% !important;
+            #overview .col-4 {
+                width: 100%;
             }
         }
 
-        @media (min-width: 1025px) {
-            #dashboard-menu-overlay {
-                display: none !important;
-            }
-
-            #dashboard-side-menu {
-                display: none !important;
-            }
-
-            #dashboard-menu-toggle {
-                display: none !important;
-            }
-
-            .nav-container {
-                justify-content: center !important;
-            }
-
-            .nav-container>div:last-child {
-                display: none !important;
+        @media (max-width: 480px) {
+            .scroll-to-top {
+                bottom: 0.75rem;
+                right: 0.75rem;
+                width: 40px;
+                height: 40px;
+                font-size: 0.9rem;
             }
         }
     </style>
+    
+    <script>
+        // Define showSection function globally
+        function showSection(sectionName) {
+            console.log('Showing section:', sectionName);
+            
+            // Hide all sections
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            const targetSection = document.getElementById(sectionName);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+            
+            // Update menu active state
+            const menuItems = document.querySelectorAll('.menu-item');
+            menuItems.forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            const activeMenuItem = document.querySelector(`[data-content="${sectionName}"]`);
+            if (activeMenuItem) {
+                activeMenuItem.classList.add('active');
+            }
+            
+            // Update URL
+            window.location.hash = sectionName;
+        }
+    </script>
 </head>
 
 <body>
-    <nav class="navbar">
-        <div class="container nav-container" style="justify-content: space-between;">
-            <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 0.75rem;">
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"
-                    style="flex-shrink: 0;">
-                    <rect width="40" height="40" rx="8" fill="var(--color-primary)" />
-                    <path
-                        d="M12 10C12 9.44772 12.4477 9 13 9H27C27.5523 9 28 9.44772 28 10V30C28 30.5523 27.5523 31 27 31H13C12.4477 31 12 30.5523 12 30V10Z"
-                        fill="white" opacity="0.9" />
-                    <path d="M15 13H25M15 17H25M15 21H22" stroke="var(--color-primary)" stroke-width="1.5"
-                        stroke-linecap="round" />
-                    <circle cx="26" cy="23" r="2" fill="var(--color-primary)" />
-                    <path d="M20 28L15 31V28H20Z" fill="var(--color-accent)" />
-                </svg>
-                <span>COMIC<span>VERSE</span></span>
-            </a>
-            <button id="dashboard-menu-toggle" class="mobile-toggle" aria-label="Toggle Menu">
-                &#9776;
-            </button>
-        </div>
-    </nav>
+        <!-- Sidebar -->
+    <!-- Mobile Topbar -->
+<div class="mobile-topbar">
+    <a href="index.html" class="logo text-primary fw-bold h5 mb-0">
+        <i class="fa-solid fa-water me-2"></i>SurfSchool
+    </a>
 
-    <!-- Side Menu Overlay -->
-    <div id="dashboard-menu-overlay"
-        style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5); z-index: 999; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; pointer-events: none;">
+    <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+</div>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    
+    
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+    <a href="index.html" class="logo text-primary fw-bold h3 mb-0">
+        <i class="fa-solid fa-water me-2"></i>SurfSchool
+    </a>
+
+    
+</div>
+
+            <nav class="sidebar-menu">
+                <a href="#overview" class="menu-item active" data-content="overview" onclick="showSection('overview'); return false;">
+                    <i class="fas fa-home"></i> Overview
+                </a>
+                <a href="#lessons" class="menu-item" data-content="lessons" onclick="showSection('lessons'); return false;">
+                    <i class="fas fa-calendar"></i> My Lessons
+                </a>
+                <a href="#progress" class="menu-item" data-content="progress" onclick="showSection('progress'); return false;">
+                    <i class="fas fa-chart-line"></i> Progress
+                </a>
+                <a href="#booking" class="menu-item" data-content="booking" onclick="showSection('booking'); return false;">
+                    <i class="fas fa-book"></i> Book Session
+                </a>
+                <a href="#weather" class="menu-item" data-content="weather" onclick="showSection('weather'); return false;">
+                    <i class="fas fa-cloud-sun"></i> Weather & Forecast
+                </a>
+                <a href="#gallery" class="menu-item" data-content="gallery" onclick="showSection('gallery'); return false;">
+                    <i class="fas fa-images"></i> Gallery
+                </a>
+                <a href="#settings" class="menu-item" data-content="settings" onclick="showSection('settings'); return false;">
+                    <i class="fas fa-cog"></i> Settings
+                </a>
+                <a href="#" class="menu-item logout-item" onclick="logout(); return false;" style="color: #dc3545; margin-top: auto;">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="profile-section">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=100&auto=format&fit=crop"
+                        class="profile-avatar" alt="User">
+                    <div class="profile-info">
+                        <div class="profile-name">Sarah Johnson</div>
+                        <div class="profile-role">Student</div>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="content-area">
+            <!-- Overview Section -->
+            <section class="content-section active" id="overview">
+                <div class="content-header">
+                    <h1 class="content-title">Welcome back, Sarah! 🏄‍♀️</h1>
+                    <p class="content-subtitle">Here is your surf update for today.</p>
+                </div>
+
+                <!-- Stats & Forecast Row -->
+                <div class="row g-4 mb-5">
+                    <!-- Forecast Card -->
+                    <div class="col-lg-8">
+                        <div class="card border-0 shadow-lg overflow-hidden h-100 forecast-card">
+                            <div class="card-body p-4 p-lg-5 position-relative">
+                                <div class="d-flex justify-content-between align-items-start mb-4">
+                                    <div>
+                                        <span
+                                            class="condition-badge px-3 py-1 rounded-pill small fw-medium mb-3 d-inline-block">
+                                            <i class="fas fa-circle text-success me-2" style="font-size: 8px;"></i>
+                                            Excellent Conditions</span>
+                                        <h2 class="display-4 fw-bold mb-0">4-6 ft</h2>
+                                        <p class="text-white-50">Swell Height • West 12s</p>
+                                    </div>
+                                    <div class="text-end">
+                                        <div class="h3 fw-bold mb-0">72°F</div>
+                                        <p class="text-white-50">Water Temp</p>
+                                    </div>
+                                </div>
+
+                                <div class="row g-4 mt-auto">
+                                    <div class="col-4">
+                                        <div class="d-flex align-items-center gap-3">
+                                            <i class="fas fa-wind fa-2x text-white-50"></i>
+                                            <div>
+                                                <div class="fw-bold">5 mph</div>
+                                                <div class="small text-white-50">Offshore</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="d-flex align-items-center gap-3">
+                                            <i class="fas fa-water fa-2x text-white-50"></i>
+                                            <div>
+                                                <div class="fw-bold">High</div>
+                                                <div class="small text-white-50">Tide (2pm)</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="d-flex align-items-center gap-3">
+                                            <i class="fas fa-sun fa-2x text-white-50"></i>
+                                            <div>
+                                                <div class="fw-bold">Clear</div>
+                                                <div class="small text-white-50">UV 8.0</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Progress Card -->
+                    <div class="col-lg-4">
+                        <div class="card border-0 shadow-sm h-100 p-4">
+                            <h3 class="h5 fw-bold mb-4">Your Progress</h3>
+                            <div class="mb-4">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span class="fw-medium">Intermediate Level</span>
+                                    <span class="text-primary fw-bold">75%</span>
+                                </div>
+                                <div class="progress w-100 bg-light rounded-pill" style="height: 8px;">
+                                    <div class="bg-primary rounded-pill h-100" style="width: 75%;"></div>
+                                </div>
+                            </div>
+                            <div class="bg-light p-3 rounded-3 mb-4">
+                                <div class="d-flex gap-3">
+                                    <div class="icon-box bg-white text-primary shadow-sm"
+                                        style="width: 48px; height: 48px;">
+                                        <i class="fas fa-calendar-check"></i>
+                                    </div>
+                                    <div>
+                                        <div class="small fw-bold text-uppercase text-secondary">Next Lesson</div>
+                                        <div class="fw-bold text-dark">Tomorrow, 9:00 AM</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline w-100">View History</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- My Lessons Section -->
+            <section class="content-section" id="lessons">
+                <div class="content-header">
+                    <h1 class="content-title">My Lessons</h1>
+                    <p class="content-subtitle">Manage your upcoming and past lessons</p>
+                </div>
+                <div class="card p-4">
+                    <h3 class="h5 fw-bold mb-3">Upcoming Lessons</h3>
+                    <div class="list-group">
+                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-1">Intermediate Surfing</h6>
+                                <small class="text-secondary">Tomorrow, 9:00 AM - 11:00 AM</small>
+                            </div>
+                            <span class="badge bg-success">Confirmed</span>
+                        </div>
+                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-1">Wave Riding Techniques</h6>
+                                <small class="text-secondary">Friday, 2:00 PM - 4:00 PM</small>
+                            </div>
+                            <span class="badge bg-warning">Pending</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Progress Section -->
+            <section class="content-section" id="progress">
+                <div class="content-header">
+                    <h1 class="content-title">Your Progress</h1>
+                    <p class="content-subtitle">Track your surfing journey</p>
+                </div>
+                <div class="card p-4">
+                    <h3 class="h5 fw-bold mb-4">Skill Development</h3>
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Balance & Stability</span>
+                            <span class="text-primary fw-bold">85%</span>
+                        </div>
+                        <div class="progress w-100 bg-light rounded-pill" style="height: 8px;">
+                            <div class="bg-primary rounded-pill h-100" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Wave Catching</span>
+                            <span class="text-primary fw-bold">70%</span>
+                        </div>
+                        <div class="progress w-100 bg-light rounded-pill" style="height: 8px;">
+                            <div class="bg-primary rounded-pill h-100" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Turning & Maneuvers</span>
+                            <span class="text-primary fw-bold">60%</span>
+                        </div>
+                        <div class="progress w-100 bg-light rounded-pill" style="height: 8px;">
+                            <div class="bg-primary rounded-pill h-100" style="width: 60%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Booking Section -->
+            <section class="content-section" id="booking">
+                <div class="content-header">
+                    <h1 class="content-title">Book a Session</h1>
+                    <p class="content-subtitle">Schedule your next surf lesson</p>
+                </div>
+                <div class="card p-4">
+                    <form class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-secondary">Select Day</label>
+                            <select class="form-control border-0 shadow-sm">
+                                <option>Thursday (Recommended)</option>
+                                <option>Friday (Good)</option>
+                                <option>Saturday (Fair)</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-secondary">Time Slot</label>
+                            <select class="form-control border-0 shadow-sm">
+                                <option>Morning (8:00 AM - 10:00 AM)</option>
+                                <option>Midday (11:00 AM - 1:00 PM)</option>
+                                <option>Afternoon (3:00 PM - 5:00 PM)</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label small fw-bold text-secondary">Lesson Type</label>
+                            <div class="d-flex gap-3">
+                                <div class="form-check card p-3 flex-fill text-center border-0 shadow-sm"
+                                    style="cursor: pointer;">
+                                    <input class="form-check-input float-none mb-2" type="radio"
+                                        name="lessonType" checked>
+                                    <label class="form-check-label d-block fw-bold small">Private
+                                        Coaching</label>
+                                </div>
+                                <div class="form-check card p-3 flex-fill text-center border-0 shadow-sm"
+                                    style="cursor: pointer;">
+                                    <input class="form-check-input float-none mb-2" type="radio"
+                                        name="lessonType">
+                                    <label class="form-check-label d-block fw-bold small">Group
+                                        Session</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-4">
+                            <button class="btn btn-primary w-100 py-3 rounded-pill shadow-lg">Confirm
+                                Booking</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Weather Section -->
+            <section class="content-section" id="weather">
+                <div class="content-header">
+                    <h1 class="content-title">Weather & Forecast</h1>
+                    <p class="content-subtitle">Current conditions and predictions</p>
+                </div>
+                <div class="card p-4">
+                    <h3 class="h5 fw-bold mb-4">7-Day Forecast</h3>
+                    <div class="row g-3">
+                        <div class="col-md-3 col-6">
+                            <div class="text-center p-3 border rounded">
+                                <div class="fw-bold">Today</div>
+                                <i class="fas fa-sun fa-2x text-warning my-2"></i>
+                                <div>4-6 ft</div>
+                                <small class="text-secondary">Excellent</small>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <div class="text-center p-3 border rounded">
+                                <div class="fw-bold">Tomorrow</div>
+                                <i class="fas fa-cloud-sun fa-2x text-info my-2"></i>
+                                <div>3-5 ft</div>
+                                <small class="text-secondary">Good</small>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <div class="text-center p-3 border rounded">
+                                <div class="fw-bold">Thursday</div>
+                                <i class="fas fa-sun fa-2x text-warning my-2"></i>
+                                <div>5-7 ft</div>
+                                <small class="text-secondary">Excellent</small>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <div class="text-center p-3 border rounded">
+                                <div class="fw-bold">Friday</div>
+                                <i class="fas fa-cloud fa-2x text-secondary my-2"></i>
+                                <div>2-4 ft</div>
+                                <small class="text-secondary">Fair</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery Section -->
+            <section class="content-section" id="gallery">
+                <div class="content-header">
+                    <h1 class="content-title">Gallery</h1>
+                    <p class="content-subtitle">Your surfing moments</p>
+                </div>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="card border-0 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?q=80&w=400&auto=format&fit=crop"
+                                class="card-img-top gallery-img" alt="Surfing">
+                            <div class="card-body">
+                                <h6 class="card-title">Morning Session</h6>
+                                <small class="text-secondary">2 days ago</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card border-0 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=400&auto=format&fit=crop"
+                                class="card-img-top gallery-img" alt="Surfing">
+                            <div class="card-body">
+                                <h6 class="card-title">Wave Riding</h6>
+                                <small class="text-secondary">1 week ago</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card border-0 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=400&auto=format&fit=crop"
+                                class="card-img-top gallery-img" alt="Surfing">
+                            <div class="card-body">
+                                <h6 class="card-title">Sunset Surf</h6>
+                                <small class="text-secondary">2 weeks ago</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section class="content-section" id="settings">
+                <div class="content-header">
+                    <h1 class="content-title">Settings</h1>
+                    <p class="content-subtitle">Manage your account preferences</p>
+                </div>
+                <div class="card p-4">
+                    <h3 class="h5 fw-bold mb-4">Profile Information</h3>
+                    <form class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">First Name</label>
+                            <input type="text" class="form-control" value="Sarah">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Last Name</label>
+                            <input type="text" class="form-control" value="Johnson">
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" value="sarah.johnson@email.com">
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Phone</label>
+                            <input type="tel" class="form-control" value="+1 234 567 8900">
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
     </div>
 
-    <!-- Side Menu -->
-    <aside id="dashboard-side-menu"
-        style="position: fixed; top: 0; left: -320px; width: 320px; height: 100vh; background: var(--color-surface); z-index: 1000; transition: left 0.3s ease; box-shadow: var(--shadow-lg); overflow-y: auto; padding: 1.5rem;">
-        <div
-            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--color-border);">
-            <h3 style="margin: 0; font-size: 1.25rem;">Menu</h3>
-            <button id="close-dashboard-menu" class="btn-icon"
-                style="font-size: 1.5rem; color: var(--color-text-primary);" aria-label="Close Menu">
-                &times;
-            </button>
-        </div>
-
-        <!-- User Profile -->
-        <div class="d-flex align-items-center mb-4 pb-4"
-            style="border-bottom: 1px solid var(--color-border); gap: 1rem;">
-            <div style="width: 50px; height: 50px; background: #ddd; border-radius: 50%; overflow: hidden;">
-                <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=200"
-                    style="width: 100%; height: 100%; object-fit: cover;" alt="Profile">
-            </div>
-            <div>
-                <div style="font-weight: 700;">Peter Parker</div>
-                <div style="font-size: 0.875rem; color: var(--color-text-secondary);">Premium Member</div>
-            </div>
-        </div>
-
-        <!-- Menu Items -->
-        <ul class="dashboard-menu"
-            style="display: flex; flex-direction: column; gap: 0.5rem; list-style: none; padding: 0; margin: 0;">
-            <li><a href="#" class="btn btn-outline"
-                    style="width: 100%; justify-content: flex-start; border: none; background: var(--color-background);">Overview</a>
-            </li>
-            <li><a href="#" class="btn btn-primary" style="width: 100%; justify-content: flex-start;">Pull
-                    List</a></li>
-            <li><a href="#" class="btn btn-outline"
-                    style="width: 100%; justify-content: flex-start; border: none;">Order History</a></li>
-            <li><a href="#" class="btn btn-outline"
-                    style="width: 100%; justify-content: flex-start; border: none;">Wishlist</a></li>
-            <li><a href="#" class="btn btn-outline"
-                    style="width: 100%; justify-content: flex-start; border: none;">Settings</a></li>
-            <li><a href="#" class="btn btn-outline"
-                    style="width: 100%; justify-content: flex-start; border: none; color: var(--color-primary); margin-top: 1rem;" onclick="handleSignout(event); return false;">Sign
-                    Out</a></li>
-        </ul>
-    </aside>
-
-    <div class="container py-5">
-        <div class="row">
-            <!-- Sidebar Navigation -->
-            <div class="col-lg-3 mb-4">
-                <div class="glass-panel" style="padding: 1.5rem; border-radius: var(--radius-md);">
-                    <div class="d-flex align-items-center mb-4 pb-4"
-                        style="border-bottom: 1px solid var(--color-border); gap: 1rem;">
-                        <div style="width: 50px; height: 50px; background: #ddd; border-radius: 50%; overflow: hidden;">
-                            <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=200"
-                                style="width: 100%; height: 100%; object-fit: cover;" alt="Profile">
-                        </div>
-                        <div>
-                            <div style="font-weight: 700;">Peter Parker</div>
-                            <div style="font-size: 0.875rem; color: var(--color-text-secondary);">Premium Member</div>
-                        </div>
-                    </div>
-
-                    <ul class="dashboard-menu" style="display: flex; flex-direction: column; gap: 0.5rem;">
-                        <li><a href="#" class="btn btn-outline"
-                                style="width: 100%; justify-content: flex-start; border: none; background: var(--color-background);">Overview</a>
-                        </li>
-                        <li><a href="#" class="btn btn-primary" style="width: 100%; justify-content: flex-start;">Pull
-                                List</a></li>
-                        <li><a href="#" class="btn btn-outline"
-                                style="width: 100%; justify-content: flex-start; border: none;">Order History</a></li>
-                        <li><a href="#" class="btn btn-outline"
-                                style="width: 100%; justify-content: flex-start; border: none;">Wishlist</a></li>
-                        <li><a href="#" class="btn btn-outline"
-                                style="width: 100%; justify-content: flex-start; border: none;">Settings</a></li>
-                        <li><a href="#" class="btn btn-outline"
-                                style="width: 100%; justify-content: flex-start; border: none; color: var(--color-primary); margin-top: 1rem;" onclick="handleSignout(event); return false;">Sign
-                                Out</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Main Content Area -->
-            <div class="col-lg-9 fade-up">
-                <!-- Tab Navigation -->
-                <div class="dashboard-tabs mb-4" style="display: flex; gap: 0.5rem; border-bottom: 2px solid var(--color-border); padding-bottom: 1rem; overflow-x: auto;">
-                    <button class="tab-btn active" data-tab="overview" style="padding: 0.75rem 1.5rem; background: var(--color-primary); color: white; border: none; border-radius: var(--radius-sm); font-weight: 600; cursor: pointer; transition: all 0.3s ease; white-space: nowrap;">Overview</button>
-                    <button class="tab-btn" data-tab="pull-list" style="padding: 0.75rem 1.5rem; background: transparent; color: var(--color-text-primary); border: 2px solid var(--color-border); border-radius: var(--radius-sm); font-weight: 600; cursor: pointer; transition: all 0.3s ease; white-space: nowrap;">Pull List</button>
-                    <button class="tab-btn" data-tab="order-history" style="padding: 0.75rem 1.5rem; background: transparent; color: var(--color-text-primary); border: 2px solid var(--color-border); border-radius: var(--radius-sm); font-weight: 600; cursor: pointer; transition: all 0.3s ease; white-space: nowrap;">Order History</button>
-                    <button class="tab-btn" data-tab="wishlist" style="padding: 0.75rem 1.5rem; background: transparent; color: var(--color-text-primary); border: 2px solid var(--color-border); border-radius: var(--radius-sm); font-weight: 600; cursor: pointer; transition: all 0.3s ease; white-space: nowrap;">Wishlist</button>
-                    <button class="tab-btn" data-tab="settings" style="padding: 0.75rem 1.5rem; background: transparent; color: var(--color-text-primary); border: 2px solid var(--color-border); border-radius: var(--radius-sm); font-weight: 600; cursor: pointer; transition: all 0.3s ease; white-space: nowrap;">Settings</button>
-                </div>
-
-                <!-- Tab Content -->
-                <div id="tab-content">
-                    <!-- Overview Tab -->
-                    <div class="tab-pane active" id="overview">
-                        <header class="d-flex justify-content-between align-items-center mb-4">
-                            <h1>Dashboard Overview</h1>
-                            <button class="btn btn-outline" style="font-size: 1rem;">+ Add New Series</button>
-                        </header>
-
-                        <!-- Stats Cards -->
-                        <div class="row mb-4">
-                            <div class="col-md-4 mb-3">
-                                <div
-                                    style="background: var(--color-surface); padding: 1.5rem; border-radius: var(--radius-sm); border: 1px solid var(--color-border);">
-                                    <div style="color: var(--color-text-secondary); font-size: 0.875rem;">Active Subscriptions
-                                    </div>
-                                    <div style="font-size: 2rem; font-weight: 700; color: var(--color-primary);">12</div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <div
-                                    style="background: var(--color-surface); padding: 1.5rem; border-radius: var(--radius-sm); border: 1px solid var(--color-border);">
-                                    <div style="color: var(--color-text-secondary); font-size: 0.875rem;">Next Pick-up</div>
-                                    <div style="font-size: 2rem; font-weight: 700;">Nov 14</div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <div
-                                    style="background: var(--color-surface); padding: 1.5rem; border-radius: var(--radius-sm); border: 1px solid var(--color-border);">
-                                    <div style="color: var(--color-text-secondary); font-size: 0.875rem;">Est. Monthly Cost
-                                    </div>
-                                    <div style="font-size: 2rem; font-weight: 700;">$48.50</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mt-4 p-4"
-                            style="background: rgba(37, 99, 235, 0.1); border-radius: var(--radius-sm); border-left: 4px solid var(--color-secondary);">
-                            <h4 style="color: var(--color-secondary); margin-bottom: 0.5rem;">Welcome Back!</h4>
-                            <p style="margin: 0; font-size: 0.9rem;">You have 3 new releases ready for pickup this week. Check your Pull List for details.</p>
-                        </div>
-                    </div>
-
-                    <!-- Pull List Tab -->
-                    <div class="tab-pane" id="pull-list" style="display: none;">
-                        <header class="d-flex justify-content-between align-items-center mb-4">
-                            <h1>Pull List Manager</h1>
-                            <button class="btn btn-outline" style="font-size: 1rem;">+ Add New Series</button>
-                        </header>
-
-                        <!-- Pull List Table -->
-                        <div class="glass-panel"
-                            style="background: var(--color-surface); border-radius: var(--radius-md); overflow: hidden;">
-                            <div style="overflow-x: auto;">
-                                <table style="width: 100%; border-collapse: collapse;">
-                                    <thead>
-                                        <tr
-                                            style="background: var(--color-background); border-bottom: 2px solid var(--color-border);">
-                                            <th style="padding: 1rem; text-align: left;">Series Title</th>
-                                            <th style="padding: 1rem; text-align: left;">Next Issue</th>
-                                            <th style="padding: 1rem; text-align: left;">Release Date</th>
-                                            <th style="padding: 1rem; text-align: right;">Price</th>
-                                            <th style="padding: 1rem; text-align: right;">Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr style="border-bottom: 1px solid var(--color-border);">
-                                            <td style="padding: 1rem;">
-                                                <div style="display: flex; align-items: center; gap: 1rem;">
-                                                    <img src="https://images.unsplash.com/photo-1608889476561-6242cfdbf622?q=80&w=100"
-                                                        style="width: 40px; height: 60px; object-fit: cover; border-radius: 4px;"
-                                                        alt="Cover">
-                                                    <div>
-                                                        <div style="font-weight: 600;">The Amazing Spider-Man</div>
-                                                        <div style="font-size: 0.8rem; color: var(--color-text-secondary);">
-                                                            Marvel Comics</div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td style="padding: 1rem;">#301</td>
-                                            <td style="padding: 1rem;">Nov 12, 2026</td>
-                                            <td style="padding: 1rem; text-align: right;">$4.99</td>
-                                            <td style="padding: 1rem; text-align: right;">
-                                                <button class="btn btn-outline"
-                                                    style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">Manage</button>
-                                            </td>
-                                        </tr>
-                                        <tr style="border-bottom: 1px solid var(--color-border);">
-                                            <td style="padding: 1rem;">
-                                                <div style="display: flex; align-items: center; gap: 1rem;">
-                                                    <img src="https://th.bing.com/th/id/R.7f9dc4084ddb426e261160a58958e475?rik=WPmSvV%2fB0LOjWg&riu=http%3a%2f%2fimg2.wikia.nocookie.net%2f__cb20060914131557%2fmarvel_dc%2fimages%2f9%2f9d%2fDetective_Comics_168.JPG&ehk=9pNc9ovgBcrafTOkPV09qmHFJ9TdiXaO%2f6O3uwTGKW4%3d&risl=&pid=ImgRaw&r=0"
-                                                        style="width: 40px; height: 60px; object-fit: cover; border-radius: 4px;"
-                                                        alt="Cover">
-                                                    <div>
-                                                        <div style="font-weight: 600;">Detective Comics</div>
-                                                        <div style="font-size: 0.8rem; color: var(--color-text-secondary);">DC
-                                                            Comics</div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td style="padding: 1rem;">#1085</td>
-                                            <td style="padding: 1rem;">Nov 14, 2026</td>
-                                            <td style="padding: 1rem; text-align: right;">$5.99</td>
-                                            <td style="padding: 1rem; text-align: right;">
-                                                <button class="btn btn-outline"
-                                                    style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">Manage</button>
-                                            </td>
-                                        </tr>
-                                        <tr style="border-bottom: 1px solid var(--color-border);">
-                                            <td style="padding: 1rem;">
-                                                <div style="display: flex; align-items: center; gap: 1rem;">
-                                                    <img src="https://images.unsplash.com/photo-1534809027769-b00d750a6bac?q=80&w=100"
-                                                        style="width: 40px; height: 60px; object-fit: cover; border-radius: 4px;"
-                                                        alt="Cover">
-                                                    <div>
-                                                        <div style="font-weight: 600;">Saga</div>
-                                                        <div style="font-size: 0.8rem; color: var(--color-text-secondary);">
-                                                            Image Comics</div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td style="padding: 1rem;">#70</td>
-                                            <td style="padding: 1rem;">Nov 28, 2026</td>
-                                            <td style="padding: 1rem; text-align: right;">$3.99</td>
-                                            <td style="padding: 1rem; text-align: right;">
-                                                <button class="btn btn-outline"
-                                                    style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">Manage</button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                        <div class="mt-4 p-4"
-                            style="background: rgba(37, 99, 235, 0.1); border-radius: var(--radius-sm); border-left: 4px solid var(--color-secondary);">
-                            <h4 style="color: var(--color-secondary); margin-bottom: 0.5rem;">Did You Know?</h4>
-                            <p style="margin: 0; font-size: 0.9rem;">You can specify varying cover preferences (e.g. "Cover A
-                                only" or "All Variants") in the settings tab for each series.</p>
-                        </div>
-                    </div>
-
-                    <!-- Order History Tab -->
-                    <div class="tab-pane" id="order-history" style="display: none;">
-                        <header class="mb-4">
-                            <h1>Order History</h1>
-                        </header>
-                        <div class="glass-panel" style="background: var(--color-surface); border-radius: var(--radius-md); padding: 2rem;">
-                            <div style="text-align: center; color: var(--color-text-secondary);">
-                                <p>No orders yet. Start building your pull list to see your order history here.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Wishlist Tab -->
-                    <div class="tab-pane" id="wishlist" style="display: none;">
-                        <header class="mb-4">
-                            <h1>My Wishlist</h1>
-                        </header>
-                        <div class="glass-panel" style="background: var(--color-surface); border-radius: var(--radius-md); padding: 2rem;">
-                            <div style="text-align: center; color: var(--color-text-secondary);">
-                                <p>Your wishlist is empty. Browse our shop to add items you're interested in.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Settings Tab -->
-                    <div class="tab-pane" id="settings" style="display: none;">
-                        <header class="mb-4">
-                            <h1>Account Settings</h1>
-                        </header>
-                        <div class="glass-panel" style="background: var(--color-surface); border-radius: var(--radius-md); padding: 2rem;">
-                            <div style="text-align: center; color: var(--color-text-secondary);">
-                                <p>Settings panel coming soon. Manage your account preferences and notification settings here.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
     <script src="assets/js/theme-toggle.js"></script>
-    <script src="assets/js/animations.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/cart.js"></script>
     <script>
-        // Global signout handler
-        function handleSignout(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            // Clear any session data (if applicable)
-            sessionStorage.clear();
-            localStorage.clear();
-            // Redirect to home page
-            window.location.href = 'index.html';
+const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('sidebar-overlay');
+const menuItems = document.querySelectorAll('.menu-item');
+
+// Logout function
+function logout() {
+    // Clear any session data (if using localStorage)
+    localStorage.removeItem('userToken');
+    localStorage.removeItem('userData');
+    
+    // Redirect to home page
+    window.location.href = 'index.html';
+}
+
+mobileMenuToggle.addEventListener('click', () => {
+    sidebar.classList.toggle('active');
+    overlay.classList.toggle('active');
+    document.body.classList.toggle('no-scroll');
+});
+
+// Close when clicking overlay
+overlay.addEventListener('click', () => {
+    sidebar.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.classList.remove('no-scroll');
+});
+
+// Close when clicking menu item (mobile only)
+menuItems.forEach(item => {
+    item.addEventListener('click', () => {
+        if (window.innerWidth <= 991) {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.classList.remove('no-scroll');
         }
-
-        // Dashboard Side Menu Toggle
-        document.addEventListener('DOMContentLoaded', function () {
-            const menuToggle = document.getElementById('dashboard-menu-toggle');
-            const closeMenuBtn = document.getElementById('close-dashboard-menu');
-            const sideMenu = document.getElementById('dashboard-side-menu');
-            const overlay = document.getElementById('dashboard-menu-overlay');
-
-            function showMenu(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                if (sideMenu) {
-                    sideMenu.classList.add('active');
-                }
-                if (overlay) {
-                    overlay.classList.add('active');
-                }
-                document.body.style.overflow = 'hidden';
-            }
-
-            function hideMenu(e) {
-                if (e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                }
-                if (sideMenu) {
-                    sideMenu.classList.remove('active');
-                }
-                if (overlay) {
-                    overlay.classList.remove('active');
-                }
-                document.body.style.overflow = '';
-            }
-
-            if (menuToggle) {
-                menuToggle.addEventListener('click', showMenu);
-            }
-
-            if (closeMenuBtn) {
-                closeMenuBtn.addEventListener('click', hideMenu);
-            }
-
-            if (overlay) {
-                overlay.addEventListener('click', hideMenu);
-            }
-
-            // Close menu when clicking on menu links (except signout)
-            const menuLinks = document.querySelectorAll('#dashboard-side-menu a');
-            menuLinks.forEach(link => {
-                link.addEventListener('click', function (e) {
-                    // Handle signout specifically
-                    if (link.innerText.toLowerCase().includes('sign out')) {
-                        handleSignout(e);
-                        return;
-                    }
-                    
-                    // Don't close if it's a hash link
-                    if (link.getAttribute('href') !== '#') {
-                        hideMenu(e);
-                    }
-                });
-            });
-
-            // Close menu on escape key
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape' && sideMenu && sideMenu.classList.contains('active')) {
-                    hideMenu();
-                }
-            });
-
-            // Dashboard Tab Functionality
-            const tabButtons = document.querySelectorAll('.dashboard-tabs .tab-btn');
-            const tabPanes = document.querySelectorAll('.tab-pane');
-
-            function switchTab(targetTab) {
-                // Update button states
-                tabButtons.forEach(btn => {
-                    btn.classList.remove('active');
-                    btn.style.background = 'transparent';
-                    btn.style.color = 'var(--color-text-primary)';
-                    btn.style.border = '2px solid var(--color-border)';
-                });
-
-                // Update content visibility
-                tabPanes.forEach(pane => {
-                    pane.classList.remove('active');
-                    pane.style.display = 'none';
-                });
-
-                // Activate selected tab
-                const activeBtn = document.querySelector(`[data-tab="${targetTab}"]`);
-                const activePane = document.getElementById(targetTab);
-
-                if (activeBtn) {
-                    activeBtn.classList.add('active');
-                    activeBtn.style.background = 'var(--color-primary)';
-                    activeBtn.style.color = 'white';
-                    activeBtn.style.border = 'none';
-                }
-
-                if (activePane) {
-                    activePane.classList.add('active');
-                    activePane.style.display = 'block';
-                }
-            }
-
-            // Add click event listeners to tab buttons
-            tabButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const targetTab = button.getAttribute('data-tab');
-                    switchTab(targetTab);
-                });
-            });
-
-            // Also handle sidebar navigation clicks
-            const sidebarLinks = document.querySelectorAll('.dashboard-menu a');
-            sidebarLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    const linkText = link.innerText.toLowerCase();
-                    let targetTab = 'overview'; // default
-
-                    if (linkText.includes('pull')) {
-                        targetTab = 'pull-list';
-                    } else if (linkText.includes('order')) {
-                        targetTab = 'order-history';
-                    } else if (linkText.includes('wishlist')) {
-                        targetTab = 'wishlist';
-                    } else if (linkText.includes('settings')) {
-                        targetTab = 'settings';
-                    }
-
-                    // Only switch tabs if it's not signout
-                    if (!linkText.includes('sign out')) {
-                        e.preventDefault();
-                        switchTab(targetTab);
-                    }
-                });
-            });
-        });
-    </script>
+    });
+});
+</script>
 </body>
 
 </html>
