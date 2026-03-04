@@ -57,6 +57,8 @@
             transition: all 0.3s ease;
             z-index: 1000;
             box-shadow: var(--shadow-sm);
+            opacity: 0;
+            pointer-events: none;
         }
 
         @media (max-width: 768px) {
@@ -87,6 +89,62 @@
         .text-primary:hover {
             text-decoration: underline !important;
             opacity: 0.8;
+        }
+
+        .theme-toggle i {
+            font-size: 16px;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            display: block !important;
+        }
+
+        [data-theme="dark"] .theme-toggle i.fa-sun {
+            color: #FFD700;
+        }
+
+        [data-theme="light"] .theme-toggle i.fa-moon {
+            color: var(--text-primary);
+        }
+
+        /* Mobile fixes for very small screens (360-368px) */
+        @media (max-width: 380px) {
+            .auth-box {
+                padding: 1.5rem;
+                max-width: 320px;
+            }
+            
+            .position-relative.mb-4 {
+                margin-bottom: 2rem !important;
+            }
+            
+            .position-relative.mb-4 .position-absolute {
+                font-size: 0.75rem !important;
+                padding: 0 0.5rem !important;
+            }
+            
+            .d-flex.gap-3.mb-4 {
+                gap: 0.5rem !important;
+                margin-bottom: 1.5rem !important;
+            }
+            
+            .btn.btn-light.w-100.py-2 {
+                padding: 0.75rem 0.5rem !important;
+                font-size: 0.875rem !important;
+            }
+            
+            .btn.btn-light.w-100.py-2 img {
+                width: 20px !important;
+                height: 20px !important;
+            }
+            
+            .btn.btn-light.w-100.py-2 span {
+                font-size: 0.75rem !important;
+            }
+            
+            .btn.btn-primary.w-100.rounded-pill.py-3 {
+                padding: 0.875rem 1rem !important;
+                margin-bottom: 1.5rem !important;
+            }
         }
     </style>
 </head>
