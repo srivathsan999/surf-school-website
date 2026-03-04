@@ -678,7 +678,7 @@ img {
 
 @media (max-width: 991px) {
     #theme-toggle.theme-toggle {
-        background: var(--surface);
+         background: var(--surface);
         width: 40px;
         height: 40px;
         display: flex;
@@ -848,79 +848,6 @@ img {
 
 .img-zoom-container {
     overflow: hidden;
-}
-
-/* Footer Styles */
-footer {
-    transition: var(--transition-normal);
-}
-
-footer .row {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-}
-
-footer .fab.fa-twitter {
-    font-family: 'Font Awesome 6 Brands' !important;
-    font-weight: 400 !important;
-}
-
-@media (max-width: 767px) {
-    footer {
-        padding-top: 3rem !important;
-        padding-bottom: 2rem !important;
-        text-align: center;
-    }
-
-    footer .row.g-5 {
-        gap: 2rem !important;
-        margin-bottom: 2rem !important;
-        flex-direction: column;
-    }
-
-    footer .col-lg-4,
-    footer .col-lg-2,
-    footer .col-md-6,
-    footer .col-md-4 {
-        width: 100% !important;
-        margin-bottom: 2rem;
-        text-align: center;
-    }
-
-    footer .logo {
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        margin-bottom: 1.5rem !important;
-        text-align: center !important;
-    }
-
-    footer .d-flex.gap-3 {
-        justify-content: center !important;
-    }
-
-    footer form {
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: 1rem !important;
-    }
-
-    footer input {
-        width: 100% !important;
-        max-width: 300px !important;
-    }
-
-    footer .col-lg-4 p {
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 400px;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1199px) {
-    footer .col-md-6 {
-        margin-bottom: 2rem;
-    }
 }
 
 /* Navbar Alignment Wrappers */
